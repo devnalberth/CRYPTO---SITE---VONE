@@ -107,113 +107,123 @@
      ════════════════════════════════════════════ -->
 <section class="vone-problem" id="problema" aria-labelledby="problem-title">
 
-  <!-- Background layers -->
-  <div class="vone-problem__bg-noise"></div>
-  <div class="vone-problem__bg-glow"></div>
+  <div class="vone-problem__bg"></div>
 
-  <div class="vone-problem__content max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+  <div class="vone-problem__wrap max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
 
-    <!-- Top: eyebrow -->
-    <div class="vone-problem__eyebrow">
-      <span class="vone-problem__eyebrow-line"></span>
-      <span>O Problema</span>
-    </div>
+    <!-- Eyebrow — design system standard -->
+    <div class="ds-section-title vone-problem__eyebrow-label">02 — O Problema</div>
 
-    <!-- Main grid: text + visual -->
-    <div class="vone-problem__grid">
-
-      <!-- Left: text content -->
-      <div class="vone-problem__text">
-        <h2 id="problem-title" class="vone-problem__headline nd-heading-l">
+    <!-- Split header -->
+    <div class="flex flex-col xl:flex-row gap-[52px] justify-between items-start vone-problem__header">
+      <div class="xl:max-w-[50%] grow-0">
+        <h2 id="problem-title" class="nd-heading-l">
           A revolução quântica é uma<br/>
-          <span class="vone-problem__headline-danger">ameaça iminente</span>
+          <span class="vone-problem__accent">ameaça iminente</span>
           <span class="font-light"> à sua segurança.</span>
         </h2>
-
-        <p class="vone-problem__desc nd-body-xl">
-          Os computadores do futuro terão a capacidade de quebrar a criptografia que protege a internet atual. Hoje, <strong>nenhuma plataforma tradicional de custódia</strong> está tecnologicamente preparada para sobreviver a essa nova era.
+      </div>
+      <div class="vone-problem__header-right xl:pt-2">
+        <p class="nd-body-xl text-nd-mid-em-text font-medium">
+          Os computadores do futuro terão a capacidade de quebrar a criptografia que protege a internet atual. Hoje, <span class="text-nd-high-em-text">nenhuma plataforma tradicional de custódia</span> está tecnologicamente preparada para sobreviver a essa nova era.
         </p>
+      </div>
+    </div>
 
-        <!-- Vulnerability indicators -->
-        <div class="vone-problem__indicators">
-          <div class="vone-problem__indicator">
-            <div class="vone-problem__indicator-header">
-              <span class="vone-problem__indicator-label">RSA-2048</span>
-              <span class="vone-problem__indicator-status vone-problem__indicator-status--critical">Vulnerável</span>
+    <!-- Main panel: indicators + shield -->
+    <div class="rounded-2xl border-nd-border-light border-[1px] bg-nd-inverse overflow-hidden relative vone-problem__panel">
+      <div class="grid grid-cols-1 xl:grid-cols-2">
+
+        <!-- Indicators column -->
+        <div class="vone-problem__ind-col">
+
+          <article class="vone-problem__ind-card vone-problem__ind-card--1">
+            <div class="vone-problem__ind-top">
+              <div class="vone-problem__ind-proto-wrap">
+                <span class="vone-problem__ind-proto">RSA-2048</span>
+                <span class="vone-problem__ind-badge vone-problem__ind-badge--critical">Vulnerável</span>
+              </div>
+              <p class="nd-body-m text-nd-mid-em-text vone-problem__ind-desc">Algoritmo de chave pública amplamente usado. Quebrável por computadores quânticos com o algoritmo de Shor.</p>
             </div>
-            <div class="vone-problem__indicator-bar">
-              <div class="vone-problem__indicator-fill vone-problem__indicator-fill--critical" style="--fill-width: 95%"></div>
+            <div class="vone-problem__ind-bar-wrap">
+              <div class="vone-problem__ind-bar-track">
+                <div class="vone-problem__ind-bar-fill vone-problem__ind-bar-fill--critical" style="--fill-width:95%"></div>
+              </div>
+              <span class="vone-problem__ind-pct">95%</span>
             </div>
-          </div>
-          <div class="vone-problem__indicator">
-            <div class="vone-problem__indicator-header">
-              <span class="vone-problem__indicator-label">ECC-256</span>
-              <span class="vone-problem__indicator-status vone-problem__indicator-status--critical">Vulnerável</span>
+          </article>
+
+          <article class="vone-problem__ind-card vone-problem__ind-card--2">
+            <div class="vone-problem__ind-top">
+              <div class="vone-problem__ind-proto-wrap">
+                <span class="vone-problem__ind-proto">ECC-256</span>
+                <span class="vone-problem__ind-badge vone-problem__ind-badge--critical">Vulnerável</span>
+              </div>
+              <p class="nd-body-m text-nd-mid-em-text vone-problem__ind-desc">Criptografia de curva elíptica usada em carteiras digitais e TLS. Igualmente vulnerável ao algoritmo de Shor.</p>
             </div>
-            <div class="vone-problem__indicator-bar">
-              <div class="vone-problem__indicator-fill vone-problem__indicator-fill--critical" style="--fill-width: 90%"></div>
+            <div class="vone-problem__ind-bar-wrap">
+              <div class="vone-problem__ind-bar-track">
+                <div class="vone-problem__ind-bar-fill vone-problem__ind-bar-fill--critical" style="--fill-width:90%"></div>
+              </div>
+              <span class="vone-problem__ind-pct">90%</span>
             </div>
-          </div>
-          <div class="vone-problem__indicator">
-            <div class="vone-problem__indicator-header">
-              <span class="vone-problem__indicator-label">AES-256</span>
-              <span class="vone-problem__indicator-status vone-problem__indicator-status--warn">Em risco</span>
+          </article>
+
+          <article class="vone-problem__ind-card vone-problem__ind-card--3">
+            <div class="vone-problem__ind-top">
+              <div class="vone-problem__ind-proto-wrap">
+                <span class="vone-problem__ind-proto">AES-256</span>
+                <span class="vone-problem__ind-badge vone-problem__ind-badge--warn">Em risco</span>
+              </div>
+              <p class="nd-body-m text-nd-mid-em-text vone-problem__ind-desc">Resistência reduzida à metade pelo algoritmo de Grover. Ainda operável, mas não mais considerado seguro a longo prazo.</p>
             </div>
-            <div class="vone-problem__indicator-bar">
-              <div class="vone-problem__indicator-fill vone-problem__indicator-fill--warn" style="--fill-width: 55%"></div>
+            <div class="vone-problem__ind-bar-wrap">
+              <div class="vone-problem__ind-bar-track">
+                <div class="vone-problem__ind-bar-fill vone-problem__ind-bar-fill--warn" style="--fill-width:55%"></div>
+              </div>
+              <span class="vone-problem__ind-pct vone-problem__ind-pct--warn">55%</span>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Visual column: fractured shield -->
+        <div class="vone-problem__visual-col">
+          <div class="vone-problem__shield-wrap">
+            <div class="vone-problem__pulse-ring vone-problem__pulse-ring--1"></div>
+            <div class="vone-problem__pulse-ring vone-problem__pulse-ring--2"></div>
+            <div class="vone-problem__pulse-ring vone-problem__pulse-ring--3"></div>
+
+            <svg class="vone-problem__shield" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100 10L180 50V130C180 165 145 195 100 210C55 195 20 165 20 130V50L100 10Z" stroke="rgba(239,68,68,0.3)" stroke-width="0.75" fill="rgba(239,68,68,0.03)"/>
+              <path d="M100 25L168 58V130C168 160 138 186 100 200C62 186 32 160 32 130V58L100 25Z" stroke="rgba(239,68,68,0.15)" stroke-width="0.5" fill="none"/>
+              <line class="vone-problem__crack vone-problem__crack--1" x1="100" y1="60" x2="65" y2="140" stroke="rgba(239,68,68,0.6)" stroke-width="0.75" stroke-dasharray="4 3"/>
+              <line class="vone-problem__crack vone-problem__crack--2" x1="100" y1="60" x2="145" y2="125" stroke="rgba(239,68,68,0.5)" stroke-width="0.75" stroke-dasharray="3 4"/>
+              <line class="vone-problem__crack vone-problem__crack--3" x1="85" y1="100" x2="50" y2="165" stroke="rgba(239,68,68,0.4)" stroke-width="0.5" stroke-dasharray="2 3"/>
+              <line class="vone-problem__crack vone-problem__crack--4" x1="115" y1="90" x2="155" y2="155" stroke="rgba(239,68,68,0.35)" stroke-width="0.5" stroke-dasharray="3 2"/>
+              <line class="vone-problem__crack vone-problem__crack--5" x1="100" y1="60" x2="100" y2="175" stroke="rgba(239,68,68,0.25)" stroke-width="0.5" stroke-dasharray="5 4"/>
+              <rect x="85" y="75" width="30" height="24" rx="3" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="rgba(239,68,68,0.06)"/>
+              <path d="M92 75V67C92 62.5 95.5 59 100 59C104.5 59 108 62.5 108 67V75" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+              <circle cx="100" cy="87" r="2.5" fill="rgba(239,68,68,0.5)"/>
+              <circle class="vone-problem__debris vone-problem__debris--1" cx="45" cy="85" r="1.5" fill="rgba(239,68,68,0.4)"/>
+              <circle class="vone-problem__debris vone-problem__debris--2" cx="160" cy="100" r="1" fill="rgba(239,68,68,0.3)"/>
+              <circle class="vone-problem__debris vone-problem__debris--3" cx="55" cy="155" r="1.2" fill="rgba(255,255,255,0.15)"/>
+              <circle class="vone-problem__debris vone-problem__debris--4" cx="150" cy="70" r="0.8" fill="rgba(255,255,255,0.12)"/>
+              <rect class="vone-problem__debris vone-problem__debris--5" x="38" y="120" width="3" height="3" rx="0.5" fill="rgba(239,68,68,0.25)" transform="rotate(45 39.5 121.5)"/>
+              <rect class="vone-problem__debris vone-problem__debris--6" x="155" y="145" width="2.5" height="2.5" rx="0.5" fill="rgba(255,255,255,0.1)" transform="rotate(30 156 146)"/>
+            </svg>
+
+            <div class="vone-problem__shield-label">
+              <span class="vone-problem__shield-label-text" data-text="COMPROMETIDO">COMPROMETIDO</span>
             </div>
           </div>
         </div>
+
       </div>
-
-      <!-- Right: visual — fractured shield -->
-      <div class="vone-problem__visual">
-        <div class="vone-problem__shield-wrap">
-
-          <!-- Pulsing danger rings -->
-          <div class="vone-problem__pulse-ring vone-problem__pulse-ring--1"></div>
-          <div class="vone-problem__pulse-ring vone-problem__pulse-ring--2"></div>
-          <div class="vone-problem__pulse-ring vone-problem__pulse-ring--3"></div>
-
-          <!-- Main shield SVG -->
-          <svg class="vone-problem__shield" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Shield body -->
-            <path d="M100 10L180 50V130C180 165 145 195 100 210C55 195 20 165 20 130V50L100 10Z" stroke="rgba(239,68,68,0.3)" stroke-width="0.75" fill="rgba(239,68,68,0.03)"/>
-            <path d="M100 25L168 58V130C168 160 138 186 100 200C62 186 32 160 32 130V58L100 25Z" stroke="rgba(239,68,68,0.15)" stroke-width="0.5" fill="none"/>
-
-            <!-- Fracture lines -->
-            <line class="vone-problem__crack vone-problem__crack--1" x1="100" y1="60" x2="65" y2="140" stroke="rgba(239,68,68,0.6)" stroke-width="0.75" stroke-dasharray="4 3"/>
-            <line class="vone-problem__crack vone-problem__crack--2" x1="100" y1="60" x2="145" y2="125" stroke="rgba(239,68,68,0.5)" stroke-width="0.75" stroke-dasharray="3 4"/>
-            <line class="vone-problem__crack vone-problem__crack--3" x1="85" y1="100" x2="50" y2="165" stroke="rgba(239,68,68,0.4)" stroke-width="0.5" stroke-dasharray="2 3"/>
-            <line class="vone-problem__crack vone-problem__crack--4" x1="115" y1="90" x2="155" y2="155" stroke="rgba(239,68,68,0.35)" stroke-width="0.5" stroke-dasharray="3 2"/>
-            <line class="vone-problem__crack vone-problem__crack--5" x1="100" y1="60" x2="100" y2="175" stroke="rgba(239,68,68,0.25)" stroke-width="0.5" stroke-dasharray="5 4"/>
-
-            <!-- Lock icon in center -->
-            <rect x="85" y="75" width="30" height="24" rx="3" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="rgba(239,68,68,0.06)"/>
-            <path d="M92 75V67C92 62.5 95.5 59 100 59C104.5 59 108 62.5 108 67V75" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
-            <circle cx="100" cy="87" r="2.5" fill="rgba(239,68,68,0.5)"/>
-
-            <!-- Floating debris particles -->
-            <circle class="vone-problem__debris vone-problem__debris--1" cx="45" cy="85" r="1.5" fill="rgba(239,68,68,0.4)"/>
-            <circle class="vone-problem__debris vone-problem__debris--2" cx="160" cy="100" r="1" fill="rgba(239,68,68,0.3)"/>
-            <circle class="vone-problem__debris vone-problem__debris--3" cx="55" cy="155" r="1.2" fill="rgba(255,255,255,0.15)"/>
-            <circle class="vone-problem__debris vone-problem__debris--4" cx="150" cy="70" r="0.8" fill="rgba(255,255,255,0.12)"/>
-            <rect class="vone-problem__debris vone-problem__debris--5" x="38" y="120" width="3" height="3" rx="0.5" fill="rgba(239,68,68,0.25)" transform="rotate(45 39.5 121.5)"/>
-            <rect class="vone-problem__debris vone-problem__debris--6" x="155" y="145" width="2.5" height="2.5" rx="0.5" fill="rgba(255,255,255,0.1)" transform="rotate(30 156 146)"/>
-          </svg>
-
-          <!-- Glitch label -->
-          <div class="vone-problem__shield-label">
-            <span class="vone-problem__shield-label-text" data-text="COMPROMETIDO">COMPROMETIDO</span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
   </div>
 
-  <!-- Bottom divider with gradient -->
   <div class="vone-problem__divider">
     <div class="vone-problem__divider-line"></div>
   </div>
@@ -614,6 +624,960 @@
 </section>
 
 
+<!-- ════════════════════════════════════════════
+     s06 — BRANDING
+     ════════════════════════════════════════════ -->
+<section class="vone-branding" id="branding" aria-labelledby="branding-title">
+
+  <div class="vone-branding__bg"></div>
+
+  <!-- Constrained header -->
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+
+    <div class="ds-section-title vone-branding__eyebrow">06 — Branding</div>
+
+    <div class="flex flex-col xl:flex-row gap-[52px] justify-between items-start vone-branding__header">
+      <div class="xl:max-w-[50%] grow-0">
+        <h2 id="branding-title" class="nd-heading-l">
+          A base de operações<br/>
+          <span class="font-light">do seu ecossistema seguro.</span>
+        </h2>
+      </div>
+      <div class="vone-branding__header-right xl:pt-2">
+        <p class="nd-body-xl text-nd-mid-em-text font-medium">
+          Tecnologia complexa feita por pessoas reais. Conheça a infraestrutura humana, os nossos escritórios e a solidez que sustenta <span class="text-nd-high-em-text">cada linha de código</span> da BlockX.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Full-bleed carousel -->
+  <div class="vone-branding__carousel-outer" role="region" aria-label="Galeria BlockX">
+
+    <!-- Meta bar: counter + progress + arrows -->
+    <div class="vone-branding__meta max-w-screen-2xl mx-auto px-5 md:px-8 xl:px-10">
+      <div class="vone-branding__counter">
+        <span class="vone-branding__counter-current" id="brandingCurrent">01</span>
+        <span class="vone-branding__counter-sep">/</span>
+        <span class="vone-branding__counter-total">06</span>
+      </div>
+      <div class="vone-branding__progress">
+        <div class="vone-branding__progress-fill" id="brandingProgress"></div>
+      </div>
+      <div class="vone-branding__arrows">
+        <button class="vone-branding__arrow" id="brandingPrev" aria-label="Slide anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        </button>
+        <button class="vone-branding__arrow" id="brandingNext" aria-label="Próximo slide">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Track viewport -->
+    <div class="vone-branding__viewport" id="brandingViewport">
+      <div class="vone-branding__track" id="brandingTrack">
+
+        <!-- ── Slide 1: O Quartel General ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 1 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="bg-glow-l" cx="25%" cy="50%" r="45%"><stop offset="0%" stop-color="#00e5ff" stop-opacity="0.18"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <radialGradient id="bg-glow-r" cx="75%" cy="45%" r="40%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <radialGradient id="bg-glow-c" cx="50%" cy="50%" r="30%"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#131c2e"/><stop offset="100%" stop-color="#09101c"/></linearGradient>
+                  <linearGradient id="floor-ref" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00e5ff" stop-opacity="0.06"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></linearGradient>
+                </defs>
+                <!-- Room -->
+                <rect width="600" height="400" fill="#04060e"/>
+                <rect width="600" height="400" fill="url(#bg-glow-l)"/>
+                <rect width="600" height="400" fill="url(#bg-glow-r)"/>
+                <rect width="600" height="400" fill="url(#bg-glow-c)"/>
+                <!-- Ceiling strip light -->
+                <rect x="160" y="0" width="280" height="1.5" fill="rgba(0,229,255,0.25)"/>
+                <rect x="160" y="0" width="280" height="40" fill="url(#floor-ref)"/>
+                <!-- Perspective floor lines -->
+                <line x1="300" y1="260" x2="0" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="0.8"/>
+                <line x1="300" y1="260" x2="600" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="0.8"/>
+                <line x1="300" y1="260" x2="120" y2="420" stroke="rgba(255,255,255,0.015)" stroke-width="0.5"/>
+                <line x1="300" y1="260" x2="480" y2="420" stroke="rgba(255,255,255,0.015)" stroke-width="0.5"/>
+                <!-- Desk -->
+                <rect x="55" y="286" width="490" height="12" rx="2" fill="url(#desk)"/>
+                <!-- Left monitor -->
+                <rect x="72" y="172" width="182" height="112" rx="3" fill="#060f1c" stroke="rgba(0,229,255,0.22)" stroke-width="1"/>
+                <rect x="72" y="172" width="182" height="11" rx="2" fill="rgba(0,229,255,0.07)"/>
+                <circle cx="84" cy="177.5" r="2.5" fill="rgba(255,80,80,0.55)"/>
+                <circle cx="93" cy="177.5" r="2.5" fill="rgba(255,185,0,0.55)"/>
+                <circle cx="102" cy="177.5" r="2.5" fill="rgba(0,229,255,0.55)"/>
+                <!-- Left screen: bar chart -->
+                <rect x="88" y="220" width="12" height="40" fill="rgba(0,229,255,0.45)" rx="1"/>
+                <rect x="104" y="208" width="12" height="52" fill="rgba(0,229,255,0.65)" rx="1"/>
+                <rect x="120" y="216" width="12" height="44" fill="rgba(0,229,255,0.38)" rx="1"/>
+                <rect x="136" y="200" width="12" height="60" fill="rgba(0,229,255,0.85)" rx="1"/>
+                <rect x="152" y="213" width="12" height="47" fill="rgba(0,229,255,0.55)" rx="1"/>
+                <rect x="168" y="204" width="12" height="56" fill="rgba(0,229,255,0.72)" rx="1"/>
+                <rect x="184" y="218" width="12" height="42" fill="rgba(0,229,255,0.42)" rx="1"/>
+                <rect x="200" y="210" width="12" height="50" fill="rgba(0,229,255,0.6)" rx="1"/>
+                <line x1="82" y1="261" x2="246" y2="261" stroke="rgba(0,229,255,0.15)" stroke-width="0.5"/>
+                <!-- Center monitor (largest) -->
+                <rect x="204" y="148" width="192" height="136" rx="3" fill="#050d1b" stroke="rgba(0,180,255,0.3)" stroke-width="1.5"/>
+                <rect x="204" y="148" width="192" height="12" rx="2" fill="rgba(0,229,255,0.06)"/>
+                <circle cx="217" cy="154" r="2.5" fill="rgba(255,80,80,0.55)"/>
+                <circle cx="226" cy="154" r="2.5" fill="rgba(255,185,0,0.55)"/>
+                <circle cx="235" cy="154" r="2.5" fill="rgba(0,229,255,0.55)"/>
+                <!-- Center screen: node network -->
+                <circle cx="300" cy="216" r="32" fill="none" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
+                <circle cx="300" cy="216" r="20" fill="none" stroke="rgba(0,229,255,0.18)" stroke-width="1"/>
+                <circle cx="300" cy="216" r="5" fill="rgba(0,229,255,0.9)"/>
+                <circle cx="300" cy="216" r="9" fill="rgba(0,229,255,0.12)"/>
+                <circle cx="260" cy="198" r="3" fill="rgba(124,58,237,0.95)"/>
+                <circle cx="340" cy="198" r="3" fill="rgba(124,58,237,0.95)"/>
+                <circle cx="258" cy="236" r="3" fill="rgba(16,185,129,0.95)"/>
+                <circle cx="342" cy="236" r="3" fill="rgba(16,185,129,0.95)"/>
+                <circle cx="300" cy="176" r="3" fill="rgba(0,229,255,0.95)"/>
+                <circle cx="300" cy="256" r="3" fill="rgba(0,229,255,0.6)"/>
+                <line x1="300" y1="216" x2="260" y2="198" stroke="rgba(124,58,237,0.45)" stroke-width="0.8"/>
+                <line x1="300" y1="216" x2="340" y2="198" stroke="rgba(124,58,237,0.45)" stroke-width="0.8"/>
+                <line x1="300" y1="216" x2="258" y2="236" stroke="rgba(16,185,129,0.45)" stroke-width="0.8"/>
+                <line x1="300" y1="216" x2="342" y2="236" stroke="rgba(16,185,129,0.45)" stroke-width="0.8"/>
+                <line x1="300" y1="216" x2="300" y2="176" stroke="rgba(0,229,255,0.5)" stroke-width="0.8"/>
+                <line x1="300" y1="216" x2="300" y2="250" stroke="rgba(0,229,255,0.3)" stroke-width="0.8"/>
+                <!-- Right monitor -->
+                <rect x="348" y="178" width="178" height="106" rx="3" fill="#060e1a" stroke="rgba(124,58,237,0.22)" stroke-width="1"/>
+                <rect x="348" y="178" width="178" height="11" rx="2" fill="rgba(124,58,237,0.07)"/>
+                <!-- Right screen: code lines -->
+                <rect x="362" y="198" width="85" height="2.5" rx="1" fill="rgba(124,58,237,0.7)"/>
+                <rect x="362" y="206" width="130" height="2.5" rx="1" fill="rgba(255,255,255,0.18)"/>
+                <rect x="370" y="214" width="100" height="2.5" rx="1" fill="rgba(0,229,255,0.5)"/>
+                <rect x="370" y="222" width="80" height="2.5" rx="1" fill="rgba(255,255,255,0.13)"/>
+                <rect x="362" y="230" width="110" height="2.5" rx="1" fill="rgba(16,185,129,0.6)"/>
+                <rect x="370" y="238" width="120" height="2.5" rx="1" fill="rgba(255,255,255,0.13)"/>
+                <rect x="362" y="246" width="70" height="2.5" rx="1" fill="rgba(124,58,237,0.5)"/>
+                <rect x="370" y="254" width="95" height="2.5" rx="1" fill="rgba(0,229,255,0.4)"/>
+                <rect x="362" y="262" width="140" height="2.5" rx="1" fill="rgba(255,255,255,0.13)"/>
+                <!-- Monitor stands -->
+                <rect x="160" y="285" width="5" height="7" rx="1" fill="rgba(255,255,255,0.06)"/>
+                <rect x="152" y="291" width="21" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+                <rect x="297" y="282" width="6" height="10" rx="1" fill="rgba(255,255,255,0.07)"/>
+                <rect x="287" y="290" width="26" height="3" rx="1" fill="rgba(255,255,255,0.06)"/>
+                <rect x="433" y="283" width="5" height="8" rx="1" fill="rgba(255,255,255,0.06)"/>
+                <rect x="425" y="290" width="21" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+                <!-- Keyboard -->
+                <rect x="224" y="294" width="110" height="7" rx="2" fill="rgba(255,255,255,0.04)"/>
+                <!-- Ambient particles -->
+                <circle cx="40" cy="120" r="1" fill="rgba(0,229,255,0.3)"/>
+                <circle cx="560" cy="90" r="1" fill="rgba(124,58,237,0.4)"/>
+                <circle cx="28" cy="240" r="0.7" fill="rgba(0,229,255,0.2)"/>
+                <circle cx="572" cy="200" r="0.7" fill="rgba(0,229,255,0.25)"/>
+                <!-- Scanline -->
+                <rect width="600" height="400" fill="url(#scanline-hq)" opacity="0.015"/>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Instalações</span>
+              <p class="vone-branding__title">O Quartel General</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 2: A Equipe ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 2 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="table-glow" cx="50%" cy="55%" r="35%"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.22"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <radialGradient id="room-glow" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#1e3a5f" stop-opacity="0.5"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <linearGradient id="person-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2440"/><stop offset="100%" stop-color="#0a1020"/></linearGradient>
+                  <linearGradient id="screen-glow-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00e5ff" stop-opacity="0.4"/><stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/></linearGradient>
+                </defs>
+                <!-- Dark room bg -->
+                <rect width="600" height="400" fill="#030710"/>
+                <rect width="600" height="400" fill="url(#room-glow)"/>
+                <!-- Large display screen on wall (top center) -->
+                <rect x="140" y="30" width="320" height="180" rx="4" fill="#06111e" stroke="rgba(0,229,255,0.18)" stroke-width="1.5"/>
+                <rect x="140" y="30" width="320" height="180" fill="url(#screen-glow-g)" opacity="0.6"/>
+                <!-- Screen content: hexagonal grid -->
+                <g opacity="0.35" stroke="rgba(0,229,255,0.6)" stroke-width="0.8" fill="none">
+                  <polygon points="300,70 322,82 322,106 300,118 278,106 278,82"/>
+                  <polygon points="300,118 322,130 322,154 300,166 278,154 278,130"/>
+                  <polygon points="256,94 278,106 278,130 256,142 234,130 234,106"/>
+                  <polygon points="344,94 366,106 366,130 344,142 322,130 322,106"/>
+                  <polygon points="256,142 278,154 278,178 256,190 234,178 234,154"/>
+                  <polygon points="344,142 366,154 366,178 344,190 322,178 322,154"/>
+                </g>
+                <!-- Hex center glow dot -->
+                <circle cx="300" cy="94" r="5" fill="rgba(0,229,255,0.9)"/>
+                <circle cx="300" cy="94" r="14" fill="rgba(0,229,255,0.08)"/>
+                <!-- Screen reflection on table -->
+                <rect width="600" height="400" fill="url(#table-glow)"/>
+                <!-- Conference table (ellipse top-down perspective) -->
+                <ellipse cx="300" cy="310" rx="190" ry="52" fill="rgba(8,18,34,0.9)" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
+                <ellipse cx="300" cy="310" rx="170" ry="44" fill="rgba(5,12,22,0.7)" stroke="rgba(0,229,255,0.05)" stroke-width="0.5"/>
+                <!-- Laptops on table (small glowing rects) -->
+                <rect x="248" y="293" width="36" height="22" rx="2" fill="#07111f" stroke="rgba(0,229,255,0.25)" stroke-width="0.8" transform="rotate(-8,266,304)"/>
+                <rect x="316" y="296" width="36" height="22" rx="2" fill="#07111f" stroke="rgba(0,229,255,0.2)" stroke-width="0.8" transform="rotate(6,334,307)"/>
+                <rect x="195" y="308" width="30" height="18" rx="2" fill="#07111f" stroke="rgba(124,58,237,0.3)" stroke-width="0.8" transform="rotate(-18,210,317)"/>
+                <rect x="374" y="306" width="30" height="18" rx="2" fill="#07111f" stroke="rgba(124,58,237,0.3)" stroke-width="0.8" transform="rotate(16,389,315)"/>
+                <!-- Laptop screen glows -->
+                <rect x="248" y="293" width="36" height="22" rx="2" fill="rgba(0,229,255,0.08)" transform="rotate(-8,266,304)"/>
+                <rect x="316" y="296" width="36" height="22" rx="2" fill="rgba(0,229,255,0.06)" transform="rotate(6,334,307)"/>
+                <!-- Person silhouettes (seated, seen from above/slight angle) -->
+                <!-- Top position: head + shoulders -->
+                <ellipse cx="300" cy="258" rx="14" ry="14" fill="rgba(20,36,60,0.9)"/>
+                <path d="M278,258 Q300,270 322,258" fill="rgba(15,28,50,0.9)" stroke="none"/>
+                <!-- Left position -->
+                <ellipse cx="198" cy="298" rx="12" ry="13" fill="rgba(18,32,54,0.9)"/>
+                <path d="M180,298 Q198,312 216,298" fill="rgba(12,24,42,0.85)" stroke="none"/>
+                <!-- Right position -->
+                <ellipse cx="402" cy="298" rx="12" ry="13" fill="rgba(18,32,54,0.9)"/>
+                <path d="M384,298 Q402,312 420,298" fill="rgba(12,24,42,0.85)" stroke="none"/>
+                <!-- Bottom left -->
+                <ellipse cx="240" cy="356" rx="13" ry="11" fill="rgba(16,30,52,0.9)"/>
+                <!-- Bottom right -->
+                <ellipse cx="360" cy="356" rx="13" ry="11" fill="rgba(16,30,52,0.9)"/>
+                <!-- Screen glow reflected on faces -->
+                <ellipse cx="300" cy="256" rx="18" ry="10" fill="rgba(0,229,255,0.06)"/>
+                <!-- Wall accent lights -->
+                <rect x="80" y="40" width="3" height="60" rx="1" fill="rgba(124,58,237,0.4)"/>
+                <rect x="517" y="40" width="3" height="60" rx="1" fill="rgba(124,58,237,0.4)"/>
+                <!-- Corner ambient light -->
+                <rect x="0" y="0" width="600" height="400" fill="rgba(0,0,0,0.15)"/>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Pessoas</span>
+              <p class="vone-branding__title">A Equipe de Elite</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 3: Infraestrutura ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 3 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="server-blue" cx="50%" cy="100%" r="70%"><stop offset="0%" stop-color="#00c4ff" stop-opacity="0.2"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <radialGradient id="server-top" cx="50%" cy="0%" r="60%"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <linearGradient id="rack-unit" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0e1a2e"/><stop offset="100%" stop-color="#08111e"/></linearGradient>
+                  <linearGradient id="rack-frame" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#162035"/><stop offset="100%" stop-color="#0a1422"/></linearGradient>
+                </defs>
+                <rect width="600" height="400" fill="#030508"/>
+                <rect width="600" height="400" fill="url(#server-blue)"/>
+                <rect width="600" height="400" fill="url(#server-top)"/>
+                <!-- Floor reflection line -->
+                <rect x="0" y="385" width="600" height="15" fill="rgba(0,196,255,0.04)"/>
+                <!-- Left rack cabinet -->
+                <rect x="80" y="30" width="140" height="350" rx="4" fill="url(#rack-frame)" stroke="rgba(0,196,255,0.12)" stroke-width="1"/>
+                <!-- Left rack units (14 units) -->
+                <g fill="url(#rack-unit)" stroke="rgba(0,196,255,0.08)" stroke-width="0.5">
+                  <rect x="88" y="40"  width="124" height="20" rx="1"/>
+                  <rect x="88" y="64"  width="124" height="20" rx="1"/>
+                  <rect x="88" y="88"  width="124" height="20" rx="1"/>
+                  <rect x="88" y="112" width="124" height="20" rx="1"/>
+                  <rect x="88" y="136" width="124" height="20" rx="1"/>
+                  <rect x="88" y="160" width="124" height="20" rx="1"/>
+                  <rect x="88" y="184" width="124" height="44" rx="1"/><!-- 2U switch -->
+                  <rect x="88" y="232" width="124" height="20" rx="1"/>
+                  <rect x="88" y="256" width="124" height="20" rx="1"/>
+                  <rect x="88" y="280" width="124" height="20" rx="1"/>
+                  <rect x="88" y="304" width="124" height="20" rx="1"/>
+                  <rect x="88" y="328" width="124" height="20" rx="1"/>
+                  <rect x="88" y="352" width="124" height="20" rx="1"/>
+                </g>
+                <!-- LED indicators left rack -->
+                <g>
+                  <circle cx="200" cy="50"  r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="200" cy="74"  r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="200" cy="98"  r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="200" cy="122" r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="200" cy="146" r="2.5" fill="rgba(255,140,0,0.85)"/>
+                  <circle cx="200" cy="170" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="200" cy="206" r="2.5" fill="rgba(0,255,136,0.8)"/>
+                  <circle cx="200" cy="242" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="200" cy="266" r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="200" cy="290" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="200" cy="314" r="2.5" fill="rgba(0,255,136,0.8)"/>
+                  <circle cx="200" cy="338" r="2.5" fill="rgba(255,60,60,0.6)"/>
+                  <circle cx="200" cy="362" r="2.5" fill="rgba(0,255,136,0.9)"/>
+                  <!-- activity blink leds -->
+                  <circle cx="192" cy="50"  r="2" fill="rgba(0,229,255,0.4)"/>
+                  <circle cx="192" cy="74"  r="2" fill="rgba(0,229,255,0.7)"/>
+                  <circle cx="192" cy="98"  r="2" fill="rgba(0,229,255,0.3)"/>
+                </g>
+                <!-- Center rack (main, wider) -->
+                <rect x="230" y="20" width="140" height="370" rx="4" fill="url(#rack-frame)" stroke="rgba(0,196,255,0.18)" stroke-width="1.5"/>
+                <g fill="url(#rack-unit)" stroke="rgba(0,196,255,0.1)" stroke-width="0.5">
+                  <rect x="238" y="30"  width="124" height="20" rx="1"/>
+                  <rect x="238" y="54"  width="124" height="20" rx="1"/>
+                  <rect x="238" y="78"  width="124" height="44" rx="1"/><!-- 2U -->
+                  <rect x="238" y="126" width="124" height="20" rx="1"/>
+                  <rect x="238" y="150" width="124" height="20" rx="1"/>
+                  <rect x="238" y="174" width="124" height="20" rx="1"/>
+                  <rect x="238" y="198" width="124" height="20" rx="1"/>
+                  <rect x="238" y="222" width="124" height="44" rx="1"/><!-- 2U switch -->
+                  <rect x="238" y="270" width="124" height="20" rx="1"/>
+                  <rect x="238" y="294" width="124" height="20" rx="1"/>
+                  <rect x="238" y="318" width="124" height="20" rx="1"/>
+                  <rect x="238" y="342" width="124" height="20" rx="1"/>
+                  <rect x="238" y="366" width="124" height="16" rx="1"/>
+                </g>
+                <!-- Center LEDs -->
+                <g>
+                  <circle cx="350" cy="40"  r="2.5" fill="rgba(0,229,255,0.95)"/>
+                  <circle cx="350" cy="64"  r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="350" cy="100" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="350" cy="136" r="2.5" fill="rgba(0,255,136,0.9)"/>
+                  <circle cx="350" cy="160" r="2.5" fill="rgba(0,229,255,0.8)"/>
+                  <circle cx="350" cy="184" r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="350" cy="208" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="350" cy="244" r="2.5" fill="rgba(0,229,255,0.85)"/>
+                  <circle cx="350" cy="280" r="2.5" fill="rgba(0,255,136,0.9)"/>
+                  <circle cx="350" cy="304" r="2.5" fill="rgba(0,229,255,0.95)"/>
+                  <circle cx="350" cy="328" r="2.5" fill="rgba(0,255,136,0.8)"/>
+                  <circle cx="350" cy="352" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="350" cy="374" r="2.5" fill="rgba(0,255,136,0.7)"/>
+                </g>
+                <!-- Right rack -->
+                <rect x="380" y="30" width="140" height="350" rx="4" fill="url(#rack-frame)" stroke="rgba(0,196,255,0.12)" stroke-width="1"/>
+                <g fill="url(#rack-unit)" stroke="rgba(0,196,255,0.08)" stroke-width="0.5">
+                  <rect x="388" y="40"  width="124" height="20" rx="1"/>
+                  <rect x="388" y="64"  width="124" height="20" rx="1"/>
+                  <rect x="388" y="88"  width="124" height="20" rx="1"/>
+                  <rect x="388" y="112" width="124" height="20" rx="1"/>
+                  <rect x="388" y="136" width="124" height="44" rx="1"/>
+                  <rect x="388" y="184" width="124" height="20" rx="1"/>
+                  <rect x="388" y="208" width="124" height="20" rx="1"/>
+                  <rect x="388" y="232" width="124" height="20" rx="1"/>
+                  <rect x="388" y="256" width="124" height="20" rx="1"/>
+                  <rect x="388" y="280" width="124" height="20" rx="1"/>
+                  <rect x="388" y="304" width="124" height="20" rx="1"/>
+                  <rect x="388" y="328" width="124" height="44" rx="1"/>
+                </g>
+                <!-- Right LEDs -->
+                <g>
+                  <circle cx="500" cy="50"  r="2.5" fill="rgba(0,255,136,0.9)"/>
+                  <circle cx="500" cy="74"  r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="500" cy="98"  r="2.5" fill="rgba(0,255,136,0.8)"/>
+                  <circle cx="500" cy="122" r="2.5" fill="rgba(0,229,255,0.95)"/>
+                  <circle cx="500" cy="158" r="2.5" fill="rgba(0,255,136,0.9)"/>
+                  <circle cx="500" cy="194" r="2.5" fill="rgba(0,229,255,0.85)"/>
+                  <circle cx="500" cy="218" r="2.5" fill="rgba(255,140,0,0.75)"/>
+                  <circle cx="500" cy="242" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="500" cy="266" r="2.5" fill="rgba(0,255,136,0.95)"/>
+                  <circle cx="500" cy="290" r="2.5" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="500" cy="314" r="2.5" fill="rgba(0,255,136,0.7)"/>
+                  <circle cx="500" cy="348" r="2.5" fill="rgba(0,229,255,0.85)"/>
+                </g>
+                <!-- Cables at bottom (curved paths) -->
+                <g fill="none" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M120,370 Q150,390 180,375 Q210,360 240,378" stroke="rgba(0,100,160,0.35)"/>
+                  <path d="M140,375 Q170,395 200,380 Q230,365 260,382" stroke="rgba(0,80,140,0.3)"/>
+                  <path d="M300,375 Q330,395 360,380 Q390,365 420,380" stroke="rgba(0,100,160,0.3)"/>
+                  <path d="M310,372 Q345,392 375,376 Q405,360 435,374" stroke="rgba(0,80,140,0.25)"/>
+                  <path d="M440,375 Q470,395 500,378 Q530,361 560,374" stroke="rgba(0,100,160,0.28)"/>
+                </g>
+                <!-- Floor LED strip underneath racks -->
+                <rect x="80" y="380" width="440" height="2" rx="1" fill="rgba(0,196,255,0.3)"/>
+                <rect x="80" y="380" width="440" height="12" fill="rgba(0,196,255,0.04)"/>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Hardware</span>
+              <p class="vone-branding__title">Infraestrutura de Dados</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 4: P&D ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 4 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="rd-center" cx="50%" cy="45%" r="45%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.16"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <radialGradient id="rd-tl" cx="15%" cy="20%" r="30%"><stop offset="0%" stop-color="#00e5ff" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                </defs>
+                <rect width="600" height="400" fill="#04050e"/>
+                <rect width="600" height="400" fill="url(#rd-center)"/>
+                <rect width="600" height="400" fill="url(#rd-tl)"/>
+                <!-- Blueprint grid (faint) -->
+                <g stroke="rgba(0,229,255,0.04)" stroke-width="0.5">
+                  <line x1="0" y1="50"  x2="600" y2="50"/>
+                  <line x1="0" y1="100" x2="600" y2="100"/>
+                  <line x1="0" y1="150" x2="600" y2="150"/>
+                  <line x1="0" y1="200" x2="600" y2="200"/>
+                  <line x1="0" y1="250" x2="600" y2="250"/>
+                  <line x1="0" y1="300" x2="600" y2="300"/>
+                  <line x1="0" y1="350" x2="600" y2="350"/>
+                  <line x1="50"  y1="0" x2="50"  y2="400"/>
+                  <line x1="100" y1="0" x2="100" y2="400"/>
+                  <line x1="150" y1="0" x2="150" y2="400"/>
+                  <line x1="200" y1="0" x2="200" y2="400"/>
+                  <line x1="250" y1="0" x2="250" y2="400"/>
+                  <line x1="300" y1="0" x2="300" y2="400"/>
+                  <line x1="350" y1="0" x2="350" y2="400"/>
+                  <line x1="400" y1="0" x2="400" y2="400"/>
+                  <line x1="450" y1="0" x2="450" y2="400"/>
+                  <line x1="500" y1="0" x2="500" y2="400"/>
+                  <line x1="550" y1="0" x2="550" y2="400"/>
+                </g>
+                <!-- Large central node graph -->
+                <!-- Outer nodes -->
+                <circle cx="300" cy="200" r="12" fill="rgba(124,58,237,0.9)"/>
+                <circle cx="300" cy="200" r="22" fill="none" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
+                <circle cx="300" cy="200" r="36" fill="none" stroke="rgba(124,58,237,0.12)" stroke-width="1"/>
+                <!-- Ring 1 nodes -->
+                <circle cx="300" cy="140" r="6" fill="rgba(0,229,255,0.85)"/>
+                <circle cx="354" cy="168" r="6" fill="rgba(0,229,255,0.85)"/>
+                <circle cx="354" cy="232" r="6" fill="rgba(0,229,255,0.85)"/>
+                <circle cx="300" cy="260" r="6" fill="rgba(0,229,255,0.85)"/>
+                <circle cx="246" cy="232" r="6" fill="rgba(0,229,255,0.85)"/>
+                <circle cx="246" cy="168" r="6" fill="rgba(0,229,255,0.85)"/>
+                <!-- Ring 1 connections -->
+                <g stroke="rgba(0,229,255,0.3)" stroke-width="0.8" fill="none">
+                  <line x1="300" y1="200" x2="300" y2="140"/>
+                  <line x1="300" y1="200" x2="354" y2="168"/>
+                  <line x1="300" y1="200" x2="354" y2="232"/>
+                  <line x1="300" y1="200" x2="300" y2="260"/>
+                  <line x1="300" y1="200" x2="246" y2="232"/>
+                  <line x1="300" y1="200" x2="246" y2="168"/>
+                  <!-- Ring connections -->
+                  <line x1="300" y1="140" x2="354" y2="168"/>
+                  <line x1="354" y1="168" x2="354" y2="232"/>
+                  <line x1="354" y1="232" x2="300" y2="260"/>
+                  <line x1="300" y1="260" x2="246" y2="232"/>
+                  <line x1="246" y1="232" x2="246" y2="168"/>
+                  <line x1="246" y1="168" x2="300" y2="140"/>
+                </g>
+                <!-- Ring 2 nodes (outer) -->
+                <circle cx="300" cy="82"  r="4" fill="rgba(16,185,129,0.75)"/>
+                <circle cx="370" cy="110" r="4" fill="rgba(16,185,129,0.75)"/>
+                <circle cx="412" cy="184" r="4" fill="rgba(16,185,129,0.75)"/>
+                <circle cx="400" cy="272" r="4" fill="rgba(16,185,129,0.6)"/>
+                <circle cx="328" cy="318" r="4" fill="rgba(16,185,129,0.7)"/>
+                <circle cx="230" cy="312" r="4" fill="rgba(16,185,129,0.65)"/>
+                <circle cx="178" cy="236" r="4" fill="rgba(16,185,129,0.7)"/>
+                <circle cx="188" cy="116" r="4" fill="rgba(16,185,129,0.75)"/>
+                <circle cx="230" cy="82"  r="4" fill="rgba(16,185,129,0.7)"/>
+                <!-- Ring 2 connections (to ring 1) -->
+                <g stroke="rgba(16,185,129,0.2)" stroke-width="0.6" fill="none">
+                  <line x1="300" y1="140" x2="300" y2="82"/>
+                  <line x1="354" y1="168" x2="412" y2="184"/>
+                  <line x1="354" y1="232" x2="400" y2="272"/>
+                  <line x1="300" y1="260" x2="328" y2="318"/>
+                  <line x1="246" y1="232" x2="178" y2="236"/>
+                  <line x1="246" y1="168" x2="188" y2="116"/>
+                  <line x1="300" y1="82" x2="370" y2="110"/>
+                  <line x1="300" y1="82" x2="230" y2="82"/>
+                </g>
+                <!-- Floating math text -->
+                <text x="50" y="60" font-family="monospace" font-size="11" fill="rgba(0,229,255,0.4)">ψ|0⟩ + ψ|1⟩</text>
+                <text x="430" y="55" font-family="monospace" font-size="11" fill="rgba(124,58,237,0.5)">∇²φ = 0</text>
+                <text x="480" y="320" font-family="monospace" font-size="10" fill="rgba(16,185,129,0.4)">CRYSTALS-D3</text>
+                <text x="40" y="340" font-family="monospace" font-size="10" fill="rgba(0,229,255,0.35)">H|ψ⟩ = E|ψ⟩</text>
+                <text x="60" y="180" font-family="monospace" font-size="10" fill="rgba(124,58,237,0.35)">2^256 ops</text>
+                <text x="410" y="380" font-family="monospace" font-size="9" fill="rgba(16,185,129,0.35)">NTRU Lattice</text>
+                <!-- Compass rose (subtle) -->
+                <g stroke="rgba(255,255,255,0.04)" stroke-width="0.8" fill="none">
+                  <circle cx="540" cy="340" r="25"/>
+                  <line x1="540" y1="315" x2="540" y2="365"/>
+                  <line x1="515" y1="340" x2="565" y2="340"/>
+                  <line x1="522" y1="322" x2="558" y2="358"/>
+                  <line x1="558" y1="322" x2="522" y2="358"/>
+                </g>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Pesquisa</span>
+              <p class="vone-branding__title">P&amp;D em Criptografia</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 5: Operações 24/7 ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 5 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="ops-center" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#0c2a40" stop-opacity="0.6"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                </defs>
+                <rect width="600" height="400" fill="#030608"/>
+                <rect width="600" height="400" fill="url(#ops-center)"/>
+                <!-- World map (simplified continents as blobs) -->
+                <g fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.12)" stroke-width="0.5">
+                  <!-- North America rough -->
+                  <path d="M90,100 Q110,85 140,90 Q170,95 175,110 Q185,130 180,155 Q170,175 150,180 Q130,175 115,165 Q95,150 85,130 Q80,115 90,100Z"/>
+                  <!-- South America -->
+                  <path d="M145,200 Q165,195 175,210 Q182,230 178,260 Q172,285 160,295 Q148,298 140,285 Q132,265 135,240 Q137,220 145,200Z"/>
+                  <!-- Europe -->
+                  <path d="M245,80 Q265,75 280,82 Q292,88 290,100 Q286,112 272,115 Q256,114 246,104 Q238,95 245,80Z"/>
+                  <!-- Africa -->
+                  <path d="M255,120 Q278,115 290,130 Q300,150 298,178 Q294,205 282,220 Q268,228 255,220 Q242,205 240,180 Q238,155 245,135 Q250,122 255,120Z"/>
+                  <!-- Asia -->
+                  <path d="M295,75 Q340,65 385,72 Q420,80 440,95 Q455,112 448,130 Q435,148 408,150 Q375,148 345,140 Q315,130 300,115 Q288,98 295,75Z"/>
+                  <!-- Australia -->
+                  <path d="M390,220 Q415,215 432,228 Q444,240 440,258 Q432,272 415,274 Q398,272 390,258 Q382,244 390,220Z"/>
+                </g>
+                <!-- Ping dots with ripples -->
+                <g>
+                  <!-- São Paulo -->
+                  <circle cx="168" cy="258" r="3" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="168" cy="258" r="8" fill="none" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
+                  <circle cx="168" cy="258" r="14" fill="none" stroke="rgba(0,229,255,0.12)" stroke-width="0.8"/>
+                  <!-- New York -->
+                  <circle cx="148" cy="120" r="3" fill="rgba(124,58,237,0.9)"/>
+                  <circle cx="148" cy="120" r="8" fill="none" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
+                  <!-- London -->
+                  <circle cx="258" cy="96" r="3" fill="rgba(0,229,255,0.9)"/>
+                  <circle cx="258" cy="96" r="8" fill="none" stroke="rgba(0,229,255,0.25)" stroke-width="0.8"/>
+                  <!-- Singapore -->
+                  <circle cx="392" cy="180" r="3" fill="rgba(16,185,129,0.9)"/>
+                  <circle cx="392" cy="180" r="8" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+                  <!-- Tokyo -->
+                  <circle cx="440" cy="112" r="2.5" fill="rgba(0,229,255,0.8)"/>
+                  <!-- Frankfurt -->
+                  <circle cx="272" cy="92" r="2" fill="rgba(124,58,237,0.7)"/>
+                </g>
+                <!-- Connection arcs between nodes -->
+                <g fill="none" stroke-width="0.7">
+                  <path d="M148,120 Q200,80 258,96" stroke="rgba(0,229,255,0.2)"/>
+                  <path d="M258,96 Q330,60 440,112" stroke="rgba(0,229,255,0.15)"/>
+                  <path d="M392,180 Q420,140 440,112" stroke="rgba(16,185,129,0.2)"/>
+                  <path d="M148,120 Q155,190 168,258" stroke="rgba(124,58,237,0.18)"/>
+                  <path d="M168,258 Q280,240 392,180" stroke="rgba(0,229,255,0.12)"/>
+                </g>
+                <!-- Terminal window (right side, overlapping map) -->
+                <rect x="330" y="190" width="240" height="185" rx="6" fill="rgba(4,10,20,0.92)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
+                <rect x="330" y="190" width="240" height="22" rx="6" fill="rgba(0,229,255,0.07)"/>
+                <circle cx="346" cy="201" r="3" fill="rgba(255,80,80,0.6)"/>
+                <circle cx="356" cy="201" r="3" fill="rgba(255,185,0,0.6)"/>
+                <circle cx="366" cy="201" r="3" fill="rgba(0,229,255,0.6)"/>
+                <text x="380" y="205" font-family="monospace" font-size="9" fill="rgba(0,229,255,0.5)">blockx — bash</text>
+                <!-- Terminal lines -->
+                <g font-family="monospace" font-size="9.5">
+                  <text x="340" y="228" fill="rgba(0,229,255,0.7)">$ status --all</text>
+                  <text x="340" y="244" fill="rgba(16,185,129,0.9)">✓ kyber-1024 ACTIVE</text>
+                  <text x="340" y="260" fill="rgba(16,185,129,0.9)">✓ dilithium3 ACTIVE</text>
+                  <text x="340" y="276" fill="rgba(16,185,129,0.9)">✓ zk-proofs  ACTIVE</text>
+                  <text x="340" y="292" fill="rgba(255,185,0,0.8)">⚡ syncing  98.7%</text>
+                  <text x="340" y="308" fill="rgba(0,229,255,0.5)">$ threat-scan --live</text>
+                  <text x="340" y="324" fill="rgba(16,185,129,0.8)">0 anomalies detected.</text>
+                  <text x="340" y="340" fill="rgba(0,229,255,0.5)">$ uptime</text>
+                  <text x="340" y="356" fill="rgba(255,255,255,0.5)">99.99% · 847d 14h 32m</text>
+                  <text x="340" y="367" fill="rgba(0,229,255,0.9)">█<tspan fill="transparent">_</tspan></text>
+                </g>
+                <!-- Latency indicator (top right mini panel) -->
+                <rect x="450" y="30" width="130" height="70" rx="4" fill="rgba(4,10,20,0.85)" stroke="rgba(16,185,129,0.2)" stroke-width="0.8"/>
+                <text x="462" y="50" font-family="monospace" font-size="8" fill="rgba(16,185,129,0.6)">GLOBAL LATENCY</text>
+                <text x="462" y="68" font-family="monospace" font-size="18" font-weight="200" fill="rgba(16,185,129,0.95)">&lt;1ms</text>
+                <text x="462" y="88" font-family="monospace" font-size="7.5" fill="rgba(16,185,129,0.5)">OPTIMAL ●</text>
+                <!-- Mini stats -->
+                <rect x="40" y="30" width="110" height="55" rx="4" fill="rgba(4,10,20,0.8)" stroke="rgba(124,58,237,0.2)" stroke-width="0.8"/>
+                <text x="52" y="50" font-family="monospace" font-size="8" fill="rgba(124,58,237,0.6)">THREATS BLOCKED</text>
+                <text x="52" y="68" font-family="monospace" font-size="16" font-weight="200" fill="rgba(124,58,237,0.95)">2.4M</text>
+                <text x="52" y="78" font-family="monospace" font-size="7" fill="rgba(124,58,237,0.4)">last 30 days</text>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Operações</span>
+              <p class="vone-branding__title">Monitoramento 24/7</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Slide 6: Cultura BlockX ── -->
+        <div class="vone-branding__slide" role="group" aria-label="Slide 6 de 6">
+          <div class="vone-branding__card">
+            <div class="vone-branding__art" aria-hidden="true">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+                <defs>
+                  <radialGradient id="city-glow" cx="50%" cy="80%" r="55%"><stop offset="0%" stop-color="#0a1a2e" stop-opacity="0.9"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                  <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#020408"/><stop offset="60%" stop-color="#060d18"/><stop offset="100%" stop-color="#090f1c"/></linearGradient>
+                  <radialGradient id="moon-glow" cx="72%" cy="15%" r="20%"><stop offset="0%" stop-color="#7c3aed" stop-opacity="0.12"/><stop offset="100%" stop-color="transparent" stop-opacity="0"/></radialGradient>
+                </defs>
+                <!-- Sky -->
+                <rect width="600" height="400" fill="url(#sky-grad)"/>
+                <rect width="600" height="400" fill="url(#moon-glow)"/>
+                <rect width="600" height="400" fill="url(#city-glow)"/>
+                <!-- Stars -->
+                <g fill="rgba(255,255,255,0.55)">
+                  <circle cx="45"  cy="30"  r="0.7"/>
+                  <circle cx="112" cy="18"  r="0.7"/>
+                  <circle cx="198" cy="44"  r="0.6"/>
+                  <circle cx="280" cy="22"  r="0.8"/>
+                  <circle cx="350" cy="38"  r="0.6"/>
+                  <circle cx="420" cy="15"  r="0.7"/>
+                  <circle cx="510" cy="28"  r="0.7"/>
+                  <circle cx="568" cy="45"  r="0.6"/>
+                  <circle cx="88"  cy="58"  r="0.5"/>
+                  <circle cx="165" cy="65"  r="0.5"/>
+                  <circle cx="460" cy="52"  r="0.5"/>
+                  <circle cx="540" cy="68"  r="0.6"/>
+                </g>
+                <!-- Moon -->
+                <circle cx="432" cy="55" r="14" fill="rgba(200,210,240,0.08)" stroke="rgba(200,210,240,0.12)" stroke-width="0.8"/>
+                <!-- Building silhouettes - background (darkest) -->
+                <g fill="rgba(5,10,20,0.95)">
+                  <rect x="0"   y="250" width="50"  height="150"/>
+                  <rect x="10"  y="210" width="35"  height="190"/>
+                  <rect x="540" y="240" width="60"  height="160"/>
+                  <rect x="555" y="200" width="40"  height="200"/>
+                </g>
+                <!-- Main BlockX headquarters building (center) -->
+                <!-- Building body -->
+                <rect x="180" y="120" width="240" height="280" fill="rgba(8,14,28,0.97)" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
+                <!-- Entrance canopy -->
+                <rect x="245" y="336" width="110" height="8" rx="2" fill="rgba(0,229,255,0.15)"/>
+                <rect x="258" y="344" width="84" height="56" fill="rgba(6,12,24,0.97)"/>
+                <!-- Building top details -->
+                <rect x="215" y="110" width="170" height="14" rx="2" fill="rgba(6,12,24,0.97)" stroke="rgba(0,229,255,0.1)" stroke-width="0.5"/>
+                <rect x="248" y="100" width="104" height="14" rx="2" fill="rgba(5,10,22,0.97)" stroke="rgba(0,229,255,0.08)" stroke-width="0.5"/>
+                <rect x="278" y="90" width="44" height="14" rx="2" fill="rgba(5,10,22,0.97)"/>
+                <!-- Antenna -->
+                <rect x="299" y="55" width="2" height="38" fill="rgba(0,229,255,0.35)"/>
+                <circle cx="300" cy="54" r="3" fill="rgba(0,229,255,0.7)"/>
+                <circle cx="300" cy="54" r="6" fill="none" stroke="rgba(0,229,255,0.2)" stroke-width="0.8"/>
+                <!-- Windows grid on main building -->
+                <g fill="rgba(0,229,255,0.5)" opacity="0.7">
+                  <!-- Row 1 -->
+                  <rect x="196" y="136" width="16" height="10" rx="1"/>
+                  <rect x="218" y="136" width="16" height="10" rx="1"/>
+                  <rect x="240" y="136" width="16" height="10" rx="1"/>
+                  <rect x="262" y="136" width="16" height="10" rx="1"/>
+                  <rect x="284" y="136" width="16" height="10" rx="1"/>
+                  <rect x="306" y="136" width="16" height="10" rx="1"/>
+                  <rect x="328" y="136" width="16" height="10" rx="1"/>
+                  <rect x="350" y="136" width="16" height="10" rx="1"/>
+                  <!-- Row 2 -->
+                  <rect x="196" y="154" width="16" height="10" rx="1" opacity="0.5"/>
+                  <rect x="218" y="154" width="16" height="10" rx="1"/>
+                  <rect x="240" y="154" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="262" y="154" width="16" height="10" rx="1"/>
+                  <rect x="284" y="154" width="16" height="10" rx="1" opacity="0.6"/>
+                  <rect x="306" y="154" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="328" y="154" width="16" height="10" rx="1"/>
+                  <rect x="350" y="154" width="16" height="10" rx="1" opacity="0.5"/>
+                  <!-- Row 3 -->
+                  <rect x="196" y="172" width="16" height="10" rx="1"/>
+                  <rect x="218" y="172" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="240" y="172" width="16" height="10" rx="1"/>
+                  <rect x="262" y="172" width="16" height="10" rx="1" opacity="0.7"/>
+                  <rect x="284" y="172" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="306" y="172" width="16" height="10" rx="1"/>
+                  <rect x="328" y="172" width="16" height="10" rx="1" opacity="0.5"/>
+                  <rect x="350" y="172" width="16" height="10" rx="1"/>
+                  <!-- Row 4 -->
+                  <rect x="196" y="190" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="218" y="190" width="16" height="10" rx="1"/>
+                  <rect x="240" y="190" width="16" height="10" rx="1" opacity="0.6"/>
+                  <rect x="262" y="190" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="284" y="190" width="16" height="10" rx="1"/>
+                  <rect x="306" y="190" width="16" height="10" rx="1" opacity="0.5"/>
+                  <rect x="328" y="190" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="350" y="190" width="16" height="10" rx="1"/>
+                  <!-- Row 5 (violet accent - late night workers) -->
+                  <rect x="196" y="208" width="16" height="10" rx="1" fill="rgba(124,58,237,0.8)" opacity="0.9"/>
+                  <rect x="218" y="208" width="16" height="10" rx="1" opacity="0.2"/>
+                  <rect x="240" y="208" width="16" height="10" rx="1" fill="rgba(124,58,237,0.7)"/>
+                  <rect x="262" y="208" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="284" y="208" width="16" height="10" rx="1" fill="rgba(124,58,237,0.8)"/>
+                  <rect x="306" y="208" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="328" y="208" width="16" height="10" rx="1" fill="rgba(124,58,237,0.6)"/>
+                  <rect x="350" y="208" width="16" height="10" rx="1" opacity="0.5"/>
+                  <!-- Row 6 -->
+                  <rect x="196" y="226" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="218" y="226" width="16" height="10" rx="1"/>
+                  <rect x="240" y="226" width="16" height="10" rx="1" opacity="0.5"/>
+                  <rect x="262" y="226" width="16" height="10" rx="1"/>
+                  <rect x="284" y="226" width="16" height="10" rx="1" opacity="0.4"/>
+                  <rect x="306" y="226" width="16" height="10" rx="1"/>
+                  <rect x="328" y="226" width="16" height="10" rx="1" opacity="0.3"/>
+                  <rect x="350" y="226" width="16" height="10" rx="1" opacity="0.7"/>
+                </g>
+                <!-- Building window glow (ambient) -->
+                <rect x="180" y="120" width="240" height="150" fill="rgba(0,229,255,0.012)"/>
+                <!-- Side building left -->
+                <rect x="80" y="190" width="100" height="210" fill="rgba(6,11,22,0.95)" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                <g fill="rgba(0,229,255,0.35)" opacity="0.6">
+                  <rect x="92" y="204" width="10" height="8" rx="1"/>
+                  <rect x="108" y="204" width="10" height="8" rx="1"/>
+                  <rect x="124" y="204" width="10" height="8" rx="1"/>
+                  <rect x="92" y="220" width="10" height="8" rx="1" opacity="0.5"/>
+                  <rect x="108" y="220" width="10" height="8" rx="1"/>
+                  <rect x="124" y="220" width="10" height="8" rx="1" opacity="0.4"/>
+                  <rect x="92" y="236" width="10" height="8" rx="1"/>
+                  <rect x="124" y="236" width="10" height="8" rx="1" opacity="0.6"/>
+                  <rect x="92" y="252" width="10" height="8" rx="1" opacity="0.3"/>
+                  <rect x="108" y="252" width="10" height="8" rx="1" fill="rgba(124,58,237,0.6)"/>
+                  <rect x="124" y="252" width="10" height="8" rx="1"/>
+                </g>
+                <!-- Side building right -->
+                <rect x="420" y="200" width="100" height="200" fill="rgba(6,11,22,0.95)" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                <g fill="rgba(0,229,255,0.35)" opacity="0.6">
+                  <rect x="432" y="214" width="10" height="8" rx="1"/>
+                  <rect x="448" y="214" width="10" height="8" rx="1" opacity="0.5"/>
+                  <rect x="464" y="214" width="10" height="8" rx="1"/>
+                  <rect x="432" y="230" width="10" height="8" rx="1" opacity="0.4"/>
+                  <rect x="448" y="230" width="10" height="8" rx="1"/>
+                  <rect x="464" y="230" width="10" height="8" rx="1" fill="rgba(124,58,237,0.5)"/>
+                  <rect x="432" y="246" width="10" height="8" rx="1"/>
+                  <rect x="448" y="246" width="10" height="8" rx="1" opacity="0.3"/>
+                  <rect x="464" y="246" width="10" height="8" rx="1"/>
+                  <rect x="432" y="262" width="10" height="8" rx="1" opacity="0.6"/>
+                  <rect x="464" y="262" width="10" height="8" rx="1" opacity="0.4"/>
+                </g>
+                <!-- Ground / road with reflection -->
+                <rect x="0" y="375" width="600" height="25" fill="rgba(4,8,16,0.98)"/>
+                <rect x="0" y="375" width="600" height="2" fill="rgba(0,229,255,0.06)"/>
+                <!-- Building name badge (glass panel near entrance) -->
+                <rect x="258" y="308" width="84" height="26" rx="3" fill="rgba(0,229,255,0.04)" stroke="rgba(0,229,255,0.15)" stroke-width="0.8"/>
+                <text x="300" y="325" font-family="monospace" font-size="9" font-weight="600" fill="rgba(0,229,255,0.7)" text-anchor="middle" letter-spacing="2">BLOCKX HQ</text>
+              </svg>
+            </div>
+            <div class="vone-branding__caption">
+              <span class="vone-branding__tag">Cultura</span>
+              <p class="vone-branding__title">Cultura BlockX</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+    </div><!-- /viewport -->
+
+  </div><!-- /carousel-outer -->
+
+  <!-- Bottom divider -->
+  <div class="vone-branding__divider">
+    <div class="vone-branding__divider-line"></div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     s07 — FAQ
+     ════════════════════════════════════════════ -->
+<section class="vone-faq" id="faq" aria-labelledby="faq-title">
+
+  <div class="vone-faq__bg"></div>
+
+  <div class="vone-faq__wrap max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+
+    <div class="vone-faq__layout">
+
+      <h2 id="faq-title" class="nd-heading-l vone-faq__headline">
+        Dúvidas <span class="font-light">Frequentes</span>
+      </h2>
+
+      <div class="vone-faq__list" role="presentation">
+
+        <div class="rounded-2xl border border-nd-border-light bg-nd-inverse overflow-hidden vone-faq__accordion">
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
+                <span class="vone-faq__num">01</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">O que é a BlockX?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Somos uma infraestrutura de segurança digital e software de custódia híbrida, focada na proteção de dados utilizando criptografia pós-quântica e IA.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-2" aria-expanded="false" aria-controls="faq-panel-2">
+                <span class="vone-faq__num">02</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">A BlockX é uma corretora de investimentos?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Não. Somos uma empresa de tecnologia. Fornecemos um ecossistema de software seguro (carteira digital) para que você tenha controle absoluto sobre seus dados e ativos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
+                <span class="vone-faq__num">03</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">O que significa &quot;Criptografia Resistente a Computadores Quânticos&quot;?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Significa que nossos algoritmos são desenvolvidos para não serem quebrados nem mesmo pela capacidade de processamento dos supercomputadores do futuro.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
+                <span class="vone-faq__num">04</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">O que é o Early Access Program?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-4" role="region" aria-labelledby="faq-trigger-4" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">É o seu convite para testar e utilizar nosso MVP (Produto Mínimo Viável) antes do lançamento público, garantindo acesso antecipado às nossas ferramentas de segurança.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-5" aria-expanded="false" aria-controls="faq-panel-5">
+                <span class="vone-faq__num">05</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">Como a Inteligência Artificial da BlockX me protege?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-5" role="region" aria-labelledby="faq-trigger-5" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Nossa IA analisa padrões de acesso e transações em tempo real. Se detectar qualquer anomalia ou comportamento suspeito, ela bloqueia a ação preventivamente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-6" aria-expanded="false" aria-controls="faq-panel-6">
+                <span class="vone-faq__num">06</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">Como funciona a custódia híbrida?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-6" role="region" aria-labelledby="faq-trigger-6" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Você tem o controle das suas chaves privadas (como em uma carteira fria), mas conta com as camadas de recuperação, facilidade de uso e segurança ativa da nossa plataforma.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="vone-faq__item vone-faq__item--last" data-faq-item>
+            <h3 class="vone-faq__heading">
+              <button type="button" class="vone-faq__trigger" id="faq-trigger-7" aria-expanded="false" aria-controls="faq-panel-7">
+                <span class="vone-faq__num">07</span>
+                <span class="vone-faq__q-text nd-body-m font-medium">A BlockX garante lucros ou rendimentos?</span>
+                <span class="vone-faq__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="vone-faq__panel" id="faq-panel-7" role="region" aria-labelledby="faq-trigger-7" aria-hidden="true">
+              <div class="vone-faq__panel-inner">
+                <p class="nd-body-m text-nd-mid-em-text vone-faq__answer">Não. Nosso foco é 100% em infraestrutura tecnológica e segurança da informação. Não fazemos promessas financeiras, de rentabilidade ou de ROI.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="vone-faq__divider">
+    <div class="vone-faq__divider-line"></div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     s08 — RODAPÉ
+     ════════════════════════════════════════════ -->
+<footer class="vone-footer" id="rodape">
+
+  <div class="vone-footer__bg"></div>
+  <div class="vone-footer__top-line" aria-hidden="true"></div>
+
+  <div class="vone-footer__inner max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+
+    <!-- 1 — Aviso legal (prioridade) -->
+    <div class="vone-footer__legal-wrap">
+      <div class="rounded-2xl border border-nd-border-light bg-nd-inverse vone-footer__legal-card">
+        <div class="vone-footer__legal-header">
+          <span class="vone-footer__legal-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </span>
+          <h2 class="vone-footer__legal-title" id="footer-legal-heading">Aviso legal obrigatório</h2>
+        </div>
+        <p class="vone-footer__legal-text text-nd-mid-em-text nd-body-m">
+          A BlockX é uma empresa de desenvolvimento de software de segurança e infraestrutura tecnológica. A BlockX <strong>não é uma corretora de valores</strong>, não oferece serviços de consultoria financeira, não emite valores mobiliários e não faz qualquer promessa de rentabilidade, lucro (ROI) ou apreciação de ativos. O nosso Programa de Acesso Antecipado (Early Access Program) e a distribuição de créditos digitais possuem caráter estritamente utilitário dentro do ecossistema do nosso software. O uso de criptografia avançada e tecnologias emergentes envolve riscos tecnológicos; os usuários são os únicos responsáveis pela gestão de suas chaves e utilização das nossas ferramentas.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2 — Links + redes -->
+    <div class="vone-footer__row">
+      <nav class="vone-footer__nav-block" aria-label="Links úteis">
+        <h3 class="vone-footer__block-title vone-footer__block-title--sm">Links úteis</h3>
+        <ul class="vone-footer__links">
+          <li><a class="vone-footer__link nd-body-m" href="#hero">Início</a></li>
+          <li><a class="vone-footer__link nd-body-m" href="#solucao">Tecnologia</a></li>
+          <li><a class="vone-footer__link nd-body-m" href="#hero">Early Access</a></li>
+          <li><a class="vone-footer__link nd-body-m" href="#branding">Sobre nós</a></li>
+          <li><a class="vone-footer__link nd-body-m" href="#">Termos de uso</a></li>
+          <li><a class="vone-footer__link nd-body-m" href="#">Política de privacidade</a></li>
+        </ul>
+      </nav>
+
+      <div class="vone-footer__social" aria-labelledby="footer-social-heading">
+        <h3 class="vone-footer__block-title vone-footer__block-title--sm" id="footer-social-heading">Redes sociais</h3>
+        <div class="vone-footer__social-row">
+          <a class="vone-footer__social-btn" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BlockX no LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="vone-footer__social-btn" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BlockX no Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a class="vone-footer__logo" href="#hero" aria-label="BlockX — voltar ao início">
+        <span class="vone-footer__logo-mark">BX</span>
+        <span class="vone-footer__logo-text">BlockX</span>
+      </a>
+    </div>
+
+    <div class="vone-footer__bottom">
+      <p class="vone-footer__copy nd-body-m text-nd-mid-em-text">© 2026 BlockX.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
 <script>
 (function () {
   const canvas = document.getElementById('latticeCanvas');
@@ -735,8 +1699,106 @@
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll('.vone-problem, .vone-agitation, .vone-solution, .vone-authority').forEach(function (el) {
+  document.querySelectorAll('.vone-problem, .vone-agitation, .vone-solution, .vone-authority, .vone-branding, .vone-faq, .vone-footer').forEach(function (el) {
     observer.observe(el);
+  });
+})();
+
+/* ── Branding Carousel ── */
+(function () {
+  var track    = document.getElementById('brandingTrack');
+  var viewport = document.getElementById('brandingViewport');
+  if (!track || !viewport) return;
+
+  var slides   = Array.from(track.querySelectorAll('.vone-branding__slide'));
+  var total    = slides.length;
+  var current  = 0;
+  var busy     = false;
+  var autoTimer;
+
+  function slideW() {
+    return slides[0].getBoundingClientRect().width + parseInt(getComputedStyle(track).gap || '0', 10);
+  }
+
+  function getPad() {
+    return parseInt(getComputedStyle(track).paddingLeft || '0', 10);
+  }
+
+  function goTo(idx) {
+    if (busy) return;
+    busy = true;
+    current = ((idx % total) + total) % total;
+    track.style.transform = 'translateX(-' + (current * slideW()) + 'px)';
+
+    var fill = document.getElementById('brandingProgress');
+    if (fill) fill.style.width = (((current + 1) / total) * 100) + '%';
+
+    var num = document.getElementById('brandingCurrent');
+    if (num) num.textContent = String(current + 1).padStart(2, '0');
+
+    slides.forEach(function (s, i) {
+      s.setAttribute('aria-current', i === current ? 'true' : 'false');
+      s.querySelector('.vone-branding__card').classList.toggle('vone-branding__card--active', i === current);
+    });
+
+    setTimeout(function () { busy = false; }, 700);
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function () { goTo(current + 1); }, 5000);
+  }
+  function stopAuto() { clearInterval(autoTimer); }
+
+  document.getElementById('brandingNext').addEventListener('click', function () { goTo(current + 1); stopAuto(); startAuto(); });
+  document.getElementById('brandingPrev').addEventListener('click', function () { goTo(current - 1); stopAuto(); startAuto(); });
+
+  var outer = document.querySelector('.vone-branding__carousel-outer');
+  outer.addEventListener('mouseenter', stopAuto);
+  outer.addEventListener('mouseleave', startAuto);
+
+  /* Touch / swipe */
+  var tx = 0;
+  outer.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  outer.addEventListener('touchend', function (e) {
+    var diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 48) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+  });
+
+  /* Keyboard */
+  outer.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') goTo(current + 1);
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+  });
+
+  goTo(0);
+  startAuto();
+})();
+
+/* ── FAQ accordion ── */
+(function () {
+  var root = document.querySelector('.vone-faq');
+  if (!root) return;
+  var items = root.querySelectorAll('[data-faq-item]');
+  items.forEach(function (item) {
+    var btn = item.querySelector('.vone-faq__trigger');
+    var panel = item.querySelector('.vone-faq__panel');
+    if (!btn || !panel) return;
+    btn.addEventListener('click', function () {
+      var wasOpen = item.classList.contains('is-open');
+      items.forEach(function (other) {
+        var ob = other.querySelector('.vone-faq__trigger');
+        var op = other.querySelector('.vone-faq__panel');
+        other.classList.remove('is-open');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+        if (op) op.setAttribute('aria-hidden', 'true');
+      });
+      if (!wasOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+      }
+    });
   });
 })();
 </script>
