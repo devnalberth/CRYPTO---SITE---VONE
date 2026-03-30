@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html class="dark tw-dark" dir="ltr" lang="pt" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link data-precedence="next" href="assets/ac2cd320dbbf7a24_ec1e7c90ec7a.css" rel="stylesheet"/>
+<link data-precedence="next" href="assets/bee7d41f96551d3d_ee0231f0ab93.css" rel="stylesheet"/>
+<title>Design System — Solana</title>
+<meta content="Living design system and pattern library for the Solana website." name="description"/>
+<link href="assets/favicon_db401e41c9c1.png" rel="icon" type="image/png"/>
+<style>
+html, body {
+  overflow: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+body, .wrapper, main, #__next, #app, .page, .content {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.opacity-0, [class*="opacity-0"] {
+  opacity: 1 !important;
+}
+
+/* ── Design System custom utilities ── */
+.ds-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.ds-section-title {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+.ds-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+.ds-spec {
+  font-size: 13px;
+  font-family: var(--font-brand-mono, monospace);
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+  text-align: right;
+}
+.ds-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(240,228,255,0.08);
+}
+.ds-row-label {
+  width: 140px;
+  flex-shrink: 0;
+}
+.ds-row-preview {
+  flex: 1;
+  min-width: 0;
+}
+.ds-row-spec {
+  width: 160px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.ds-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.ds-swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(240,228,255,0.12);
+}
+.ds-swatch-color {
+  height: 80px;
+}
+.ds-swatch-info {
+  padding: 12px;
+  font-size: 13px;
+  background: rgba(0,0,0,0.3);
+}
+.ds-swatch-info strong {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255,255,255,0.9);
+}
+.ds-swatch-info span {
+  color: rgba(255,255,255,0.45);
+}
+.ds-component-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(240,228,255,0.08);
+}
+.ds-component-label {
+  width: 160px;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+.ds-motion-card {
+  border: 1px solid rgba(240,228,255,0.12);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ds-motion-card:hover .ds-motion-target {
+  animation-play-state: running;
+}
+.ds-motion-target {
+  animation-play-state: paused;
+}
+.ds-motion-trigger {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* Nav sticky */
+.ds-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(18,18,18,0.92);
+  border-bottom: 1px solid rgba(240,228,255,0.12);
+}
+.ds-nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ds-nav-inner::-webkit-scrollbar { display: none; }
+.ds-nav a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.ds-nav a:hover,
+.ds-nav a.active {
+  color: #fff;
+}
+
+/* Reset for animation gallery replay */
+.ds-replay {
+  cursor: pointer;
+}
+.ds-replay:hover .ds-anim-box {
+  animation-iteration-count: 1;
+  animation-play-state: running;
+}
+
+@media (max-width: 768px) {
+  .ds-row { flex-direction: column; gap: 8px; }
+  .ds-row-label, .ds-row-spec { width: auto; }
+  .ds-row-spec { text-align: left; }
+  .ds-component-row { flex-direction: column; align-items: flex-start; }
+  .ds-component-label { width: auto; }
+}
+</style>
+</head>
+<body style="scroll-behavior: smooth;">
+
+<!-- ════════════════════════════════════════════
+     NAVIGATION — Design System Anchors
+     ════════════════════════════════════════════ -->
+<nav class="ds-nav" id="ds-navbar">
+  <div class="ds-nav-inner">
+    <a href="#hero" style="color:#fff; font-weight:600; margin-right:8px;">
+      <svg class="block" fill="none" height="20" style="color:currentColor; vertical-align:middle;" viewBox="0 0 149 22" width="80" xmlns="http://www.w3.org/2000/svg"><mask height="23" id="ds-logo-mask" maskUnits="userSpaceOnUse" style="mask-type:luminance" width="149" x="0" y="0"><path d="M0 0h149v22.142H0z" fill="#fff"></path></mask><g mask="url(#ds-logo-mask)"><path d="m25.033 17.458-4.087 4.382a.95.95 0 0 1-.692.302H.879a.476.476 0 0 1-.348-.798l4.082-4.382a.95.95 0 0 1 .692-.302H24.68a.473.473 0 0 1 .353.798m-4.087-8.827a.96.96 0 0 0-.692-.302H.879a.475.475 0 0 0-.348.798l4.082 4.385a.96.96 0 0 0 .692.302H24.68a.476.476 0 0 0 .346-.798zM.879 5.483h19.375a.95.95 0 0 0 .692-.302L25.033.798a.475.475 0 0 0-.09-.724A.47.47 0 0 0 24.68 0H5.305a.95.95 0 0 0-.692.302L.531 4.685a.475.475 0 0 0 .348.798" fill="url(#ds-logo-grad)"></path><path d="M48.653 9.365H38.288V5.95h13.06V2.538H38.252a3.407 3.407 0 0 0-3.425 3.388v3.46a3.406 3.406 0 0 0 3.425 3.392h10.38v3.414H35.075v3.413h13.578a3.41 3.41 0 0 0 3.425-3.388v-3.46a3.406 3.406 0 0 0-3.425-3.392m20.08-6.827H58.33a3.407 3.407 0 0 0-3.434 3.388v10.291a3.405 3.405 0 0 0 3.434 3.389h10.405a3.407 3.407 0 0 0 3.425-3.389V5.926a3.4 3.4 0 0 0-2.12-3.136 3.4 3.4 0 0 0-1.305-.252Zm-.025 13.654H58.354V5.952h10.35zm36.468-13.654H95.028a3.407 3.407 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.102v5.607h3.46V5.926a3.41 3.41 0 0 0-2.136-3.143 3.4 3.4 0 0 0-1.313-.246Zm-.025 8.047H95.049V5.951h10.102zm40.424-8.047h-10.149a3.406 3.406 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.079v5.607H149V5.926a3.42 3.42 0 0 0-1.011-2.403 3.4 3.4 0 0 0-2.414-.985m-.035 8.047h-10.102V5.951h10.102zm-20.066 5.607h-1.384l-4.948-12.224a2.27 2.27 0 0 0-2.113-1.43h-3.07a2.27 2.27 0 0 0-2.283 2.26v14.808h3.46V5.95h1.384l4.945 12.225a2.285 2.285 0 0 0 2.122 1.42h3.07a2.27 2.27 0 0 0 2.283-2.26V2.538h-3.466zm-46.8-13.654h-3.46v13.68a3.405 3.405 0 0 0 3.438 3.388H89.03v-3.414H78.675z" fill="currentColor"></path></g><defs><linearGradient gradientUnits="userSpaceOnUse" id="ds-logo-grad" x1="2.494" x2="22.809" y1="22.671" y2="-0.233"><stop offset="0.08" stop-color="#9945FF"></stop><stop offset="0.3" stop-color="#8752F3"></stop><stop offset="0.5" stop-color="#5497D5"></stop><stop offset="0.6" stop-color="#43B4CA"></stop><stop offset="0.72" stop-color="#28E0B9"></stop><stop offset="0.97" stop-color="#19FB9B"></stop></linearGradient></defs></svg>
+    </a>
+    <a href="#hero">Hero</a>
+    <a href="#typography">Tipografia</a>
+    <a href="#colors">Cores</a>
+    <a href="#components">Componentes</a>
+    <a href="#layout">Layout</a>
+    <a href="#motion">Motion</a>
+    <a href="#icons">Ícones</a>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     0) HERO — Exact Clone, Text Adapted
+     ════════════════════════════════════════════ -->
+<section aria-labelledby="hero-title" class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left border-b border-nd-border-light m-0" id="hero">
+  <div class="!absolute inset-0 z-0" style="position: relative; width: var(--unicorn-width); height: var(--unicorn-height); --unicorn-width: 100%; --unicorn-height: 101%;">
+    <div style="position: absolute; inset: 0px;">
+      <img alt="Hero background" class="!absolute inset-0 z-0" data-nimg="fill" decoding="async" sizes="150vw" src="assets/image_62318cf439ae" srcset="assets/image_a840b7e5aead.jpg 1080w, assets/image_b2429828d62d.jpg 1200w, assets/image_8788fb50e9de.jpg 1920w, assets/image_58253954cef6.jpg 2048w, assets/image_62318cf439ae 3840w" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover; color: transparent;"/>
+    </div>
+  </div>
+  <div class="flex min-h-[700px]">
+    <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 flex flex-col justify-between relative pt-12 xl:pt-[165px] md:pb-8 xl:pb-10 min-h-[calc(100vh-70px)]">
+      <div class="max-w-5xl">
+        <h1 class="nd-heading-2xl" id="hero-title">O design system completo
+<br/><span class="font-light">para cada detalhe visual.</span></h1>
+        <p class="text-nd-mid-em-text font-medium max-md:mt-5 md:mt-6 nd-body-xl xl:max-w-[440px]">Padrões, componentes e tokens de design extraídos diretamente da interface de referência Solana.</p>
+        <div class="mt-[52px]">
+          <button aria-label="Explorar" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 h-11 px-6 rounded-full md:h-[48px] nd-body-m !px-5 py-3 bg-nd-cta text-nd-inverse hover:!bg-nd-primary/90 tracking-[-0.16px] md:tracking-[-0.18px]">Explorar<span class="-mr-3 p-1 !size-8 bg-nd-inverse text-nd-cta rounded-full inline-flex items-center justify-center"><svg aria-hidden="true" class="lucide lucide-arrow-right !size-[16px] block" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></button>
+        </div>
+      </div>
+      <div class="mt-[52px] -mx-5 md:mx-0">
+        <div class="overflow-hidden w-full md:w-[504px]">
+          <div class="w-full flex flex-row items-stretch p-2 bg-[#DFCDF5] text-nd-inverse md:rounded-xl bg-blend-screen">
+            <div class="grow-0 shrink-0 mr-3 md:mr-5 pb-10 md:pb-0">
+              <img alt="" class="!h-auto w-[74px] md:w-[153px] rounded-lg md:rounded-sm aspect-square" data-nimg="1" decoding="async" height="153" loading="lazy" src="assets/image_ca532d82cbb4.png" srcset="assets/image_33f0a1333493 1x, assets/image_ca532d82cbb4.png 2x" style="color:transparent;object-fit:cover" width="153"/>
+            </div>
+            <div class="grow flex flex-col justify-between md:py-1.5 xl:py-2 md:pr-2">
+              <div class="max-md:py-1 max-md:pr-1">
+                <p class="font-medium nd-body-l">Design System Showcase</p>
+                <p class="nd-body-s opacity-[0.64]">Biblioteca de padrões visuais e componentes documentados para referência.</p>
+              </div>
+              <div class="mt-2 md:mt-3">
+                <a aria-label="Ver componentes" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 px-6 rounded-full font-normal nd-body-s tracking-[-0.1em] !px-4 py-[6px] h-8 bg-nd-inverse text-nd-primary hover:!bg-nd-inverse/90 ml-[-86px] md:ml-0 w-[calc(100%+86px)] md:w-auto" href="#components">Ver Componentes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logo bar (clone from original) -->
+<div class="relative w-full">
+  <div class="flex whitespace-nowrap items-center scrollbar-hidden overflow-auto transform-gpu h-[73px] xl:h-[123px] gap-4 md:gap-3 xl:gap-4 justify-evenly max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 py-6 xl:py-11 mt-4 md:mt-6 xl:mt-8">
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0"><img alt="Western Union" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/western-union_f1aeac405466.svg"/></div>
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0"><img alt="Visa" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/visa_e8fa25ff8025.svg"/></div>
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0"><img alt="Worldpay" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/worldpay_142080bd25e3.svg"/></div>
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0" style="height:80%"><img alt="Circle" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/circle_60712b3f21bf.svg"/></div>
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0"><img alt="PayPal" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/paypal_9f80498746b8.svg"/></div>
+    <div class="flex items-center justify-center relative md:mr-12 xl:mr-32 self-center h-full m-0 !mr-0 flex-shrink-0"><img alt="Fiserv" class="block h-full max-h-full max-w-none !w-auto" loading="lazy" src="assets/fiserv_c690aeace0e5.svg"/></div>
+  </div>
+</div>
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     1) TYPOGRAPHY
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="typography">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">01 — Tipografia</div>
+    <h2 class="nd-heading-l">Escala tipográfica<br/><span class="font-light">do design system.</span></h2>
+    <p class="text-nd-mid-em-text nd-body-xl max-md:mt-3 md:mt-5 xl:mt-5 xl:max-w-[500px]">Cada estilo abaixo é renderizado com as classes originais do CSS, sem inline styles.</p>
+
+    <div class="mt-10 xl:mt-16">
+
+      <!-- Heading 2XL -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Heading 2XL</span></div>
+        <div class="ds-row-preview"><h1 class="nd-heading-2xl">Mercado de capitais</h1></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-heading-2xl</span></div>
+      </div>
+
+      <!-- Heading L -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Heading L</span></div>
+        <div class="ds-row-preview"><h2 class="nd-heading-l">Plataforma financeira</h2></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-heading-l</span></div>
+      </div>
+
+      <!-- Heading M -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Heading M</span></div>
+        <div class="ds-row-preview"><h3 class="nd-heading-m">Solana Developer Platform</h3></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-heading-m</span></div>
+      </div>
+
+      <!-- Heading S -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Heading S</span></div>
+        <div class="ds-row-preview"><h3 class="nd-heading-s">Solana Accelerate USA</h3></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-heading-s</span></div>
+      </div>
+
+      <!-- Heading L + font-light -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Heading L Light</span></div>
+        <div class="ds-row-preview"><h2 class="nd-heading-l"><span class="font-light">Crescimento mais rápido</span></h2></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-heading-l font-light</span></div>
+      </div>
+
+      <!-- Bold L (font-bold) -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Bold L</span></div>
+        <div class="ds-row-preview"><span class="font-bold nd-body-l">Texto com ênfase forte</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">font-bold nd-body-l</span></div>
+      </div>
+
+      <!-- Bold M (font-bold) -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Bold M</span></div>
+        <div class="ds-row-preview"><span class="font-bold nd-body-m">Texto com ênfase forte média</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">font-bold nd-body-m</span></div>
+      </div>
+
+      <!-- Bold S (font-bold) -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Bold S</span></div>
+        <div class="ds-row-preview"><span class="font-bold nd-body-s">Texto com ênfase forte pequeno</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">font-bold nd-body-s</span></div>
+      </div>
+
+      <!-- Body XL -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body XL</span></div>
+        <div class="ds-row-preview"><p class="nd-body-xl">Solana é a rede de alto desempenho que impulsiona mercados de capitais na internet.</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-xl</span></div>
+      </div>
+
+      <!-- Body XL Medium -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body XL Medium</span></div>
+        <div class="ds-row-preview"><p class="nd-body-xl font-medium">A plataforma número um para startups e empresas, com mais usuários.</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-xl font-medium</span></div>
+      </div>
+
+      <!-- Body L -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body L</span></div>
+        <div class="ds-row-preview"><p class="nd-body-l">Solana Developer Platform — Build, deploy, and scale.</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-l</span></div>
+      </div>
+
+      <!-- Body L Medium -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body L Medium</span></div>
+        <div class="ds-row-preview"><p class="nd-body-l font-medium">Stablecoin com lançamento em 2026</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-l font-medium</span></div>
+      </div>
+
+      <!-- Body M -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body M</span></div>
+        <div class="ds-row-preview"><p class="nd-body-m">Execute um validator para ajudar a manter a rede rápida e segura para todos.</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-m</span></div>
+      </div>
+
+      <!-- Body M Medium -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body M Medium</span></div>
+        <div class="ds-row-preview"><p class="nd-body-m font-medium">Transações por segundo</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-m font-medium</span></div>
+      </div>
+
+      <!-- Body S -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Body S</span></div>
+        <div class="ds-row-preview"><p class="nd-body-s">Build, deploy, and scale on Solana with enterprise-grade tools.</p></div>
+        <div class="ds-row-spec"><span class="ds-spec">nd-body-s</span></div>
+      </div>
+
+      <!-- Mono / Brand Mono -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Brand Mono</span></div>
+        <div class="ds-row-preview"><span class="font-brand-mono text-[14px] leading-[1.14] font-bold uppercase">TERMINAL</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">font-brand-mono uppercase</span></div>
+      </div>
+
+      <!-- Large stat number -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Stat Large</span></div>
+        <div class="ds-row-preview"><div class="text-[28px] xl:text-[40px] leading-[1.14] xl:leading-[1] font-light uppercase">500,434,023,774</div></div>
+        <div class="ds-row-spec"><span class="ds-spec">40px / light / uppercase</span></div>
+      </div>
+
+      <!-- Medium stat number -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Stat Medium</span></div>
+        <div class="ds-row-preview"><div class="text-[20px] xl:text-[40px] leading-none font-light uppercase">50M</div></div>
+        <div class="ds-row-spec"><span class="ds-spec">20–40px / light / uppercase</span></div>
+      </div>
+
+      <!-- Highlight Colors -->
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Highlight Gold</span></div>
+        <div class="ds-row-preview"><span class="text-nd-highlight-gold nd-body-xl font-medium">Texto em destaque</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">text-nd-highlight-gold</span></div>
+      </div>
+
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Highlight Green</span></div>
+        <div class="ds-row-preview"><span class="text-nd-highlight-green nd-body-xl font-medium">Texto em destaque</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">text-nd-highlight-green</span></div>
+      </div>
+
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Highlight Lavender</span></div>
+        <div class="ds-row-preview"><span class="text-nd-highlight-lavendar nd-body-xl font-medium">Texto em destaque</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">text-nd-highlight-lavendar</span></div>
+      </div>
+
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Highlight Lime</span></div>
+        <div class="ds-row-preview"><span class="text-nd-highlight-lime nd-body-xl font-medium">Texto em destaque</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">text-nd-highlight-lime</span></div>
+      </div>
+
+      <div class="ds-row">
+        <div class="ds-row-label"><span class="ds-label">Highlight Orange</span></div>
+        <div class="ds-row-preview"><span class="text-nd-highlight-orange nd-body-xl font-medium">Texto em destaque</span></div>
+        <div class="ds-row-spec"><span class="ds-spec">text-nd-highlight-orange</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     2) COLORS & SURFACES
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="colors">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">02 — Cores &amp; Superfícies</div>
+    <h2 class="nd-heading-l">Paleta de cores<br/><span class="font-light">e superfícies.</span></h2>
+    <p class="text-nd-mid-em-text nd-body-xl max-md:mt-3 md:mt-5 xl:mt-5 xl:max-w-[500px]">Backgrounds, borders, text tokens e gradientes usados na interface.</p>
+
+    <!-- Backgrounds -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Backgrounds</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse"></div>
+          <div class="ds-swatch-info"><strong>bg-nd-inverse</strong><span>Background principal (dark)</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-bg"></div>
+          <div class="ds-swatch-info"><strong>bg-nd-bg</strong><span>Background base</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-black"></div>
+          <div class="ds-swatch-info"><strong>bg-black</strong><span>Background puro</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-[#0D0C11]"></div>
+          <div class="ds-swatch-info"><strong>bg-[#0D0C11]</strong><span>Card background (news)</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-cta"></div>
+          <div class="ds-swatch-info"><strong>bg-nd-cta</strong><span>CTA / Primary action</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-[#DFCDF5]"></div>
+          <div class="ds-swatch-info"><strong>bg-[#DFCDF5]</strong><span>Promotional card</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-border-light"></div>
+          <div class="ds-swatch-info"><strong>bg-nd-border-light</strong><span>Community card fill</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-gray-900/50"></div>
+          <div class="ds-swatch-info"><strong>bg-gray-900/50</strong><span>Overlay / dimmed</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Colors -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Cores de Texto</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-high-em-text nd-body-l font-medium">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-high-em-text</strong><span>Texto primário</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-mid-em-text nd-body-l font-medium">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-mid-em-text</strong><span>Texto secundário</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-white nd-body-l font-medium">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-white</strong><span>Branco puro</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-cta nd-body-l font-medium">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-cta</strong><span>CTA / Accent</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-primary nd-body-l font-medium">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-primary</strong><span>Primary brand</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-inverse nd-body-l font-medium" style="background:#fff;padding:4px 8px;border-radius:4px;">Aa</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-inverse</strong><span>Texto invertido</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Borders &amp; Dividers</h3>
+      <div class="flex flex-col gap-6">
+        <div class="p-6 border border-nd-border-light rounded-xl">
+          <span class="ds-label">border-nd-border-light</span>
+          <div class="mt-3 text-nd-mid-em-text nd-body-s">Borda padrão para containers, seções e cards</div>
+        </div>
+        <div class="p-6 border border-nd-border-prominent rounded-xl">
+          <span class="ds-label">border-nd-border-prominent</span>
+          <div class="mt-3 text-nd-mid-em-text nd-body-s">Borda para botões outline e elementos interativos</div>
+        </div>
+        <div class="p-6 border border-[rgba(240,228,255,0.12)] rounded-xl">
+          <span class="ds-label">border-[rgba(240,228,255,0.12)]</span>
+          <div class="mt-3 text-nd-mid-em-text nd-body-s">Borda da navbar e separadores sutis</div>
+        </div>
+        <div class="p-6 border border-white/10 rounded-xl">
+          <span class="ds-label">border-white/10</span>
+          <div class="mt-3 text-nd-mid-em-text nd-body-s">Borda leve em elementos sobre fundo escuro</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gradients -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Gradientes</h3>
+      <div class="flex flex-col gap-6">
+        <div class="rounded-xl overflow-hidden border border-nd-border-light">
+          <div class="h-20 relative before:absolute before:top-0 before:left-0 before:w-px before:h-full before:bg-gradient-to-b before:from-[#D884F0] before:to-[#44EBA6] flex items-center px-8">
+            <span class="nd-body-m font-medium ml-4">Gradient accent bar — #D884F0 → #44EBA6</span>
+          </div>
+          <div class="ds-swatch-info"><strong>Vertical accent line</strong><span>Usado em stat cards e seções de conteúdo lateral</span></div>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-nd-border-light">
+          <div class="h-20 bg-gradient-to-b from-[#0B0A10] via-[#0B0A10] to-transparent flex items-center px-8">
+            <span class="nd-body-m font-medium">Page fade — from-[#0B0A10] to transparent</span>
+          </div>
+          <div class="ds-swatch-info"><strong>Gradient overlay</strong><span>Fade top-to-bottom sobre seções com background image</span></div>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-nd-border-light">
+          <div class="h-20 flex items-center px-8" style="background: linear-gradient(135deg, #9945FF 0%, #8752F3 20%, #5497D5 40%, #43B4CA 55%, #28E0B9 72%, #19FB9B 100%);">
+            <span class="nd-body-m font-medium text-black">Solana gradient — Brand identity</span>
+          </div>
+          <div class="ds-swatch-info"><strong>Solana brand gradient</strong><span>#9945FF → #8752F3 → #5497D5 → #43B4CA → #28E0B9 → #19FB9B</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlight Colors -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Highlight Text Colors</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-highlight-gold text-[24px] font-medium">Gold</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-highlight-gold</strong><span>Destaque dourado</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-highlight-green text-[24px] font-medium">Green</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-highlight-green</strong><span>Destaque verde</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-highlight-lavendar text-[24px] font-medium">Lavender</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-highlight-lavendar</strong><span>Destaque lavanda</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-highlight-lime text-[24px] font-medium">Lime</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-highlight-lime</strong><span>Destaque lima</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color bg-nd-inverse flex items-center justify-center"><span class="text-nd-highlight-orange text-[24px] font-medium">Orange</span></div>
+          <div class="ds-swatch-info"><strong>text-nd-highlight-orange</strong><span>Destaque laranja</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     3) UI COMPONENTS
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="components">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">03 — Componentes UI</div>
+    <h2 class="nd-heading-l">Botões, cards e<br/><span class="font-light">elementos interativos.</span></h2>
+
+    <!-- ── Buttons ── -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Botões</h3>
+
+      <!-- CTA Button Primary -->
+      <div class="ds-component-row">
+        <div class="ds-component-label">CTA Primary</div>
+        <button aria-label="Começar" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 h-11 px-6 rounded-full md:h-[48px] nd-body-m !px-5 py-3 bg-nd-cta text-nd-inverse hover:!bg-nd-primary/90 tracking-[-0.16px] md:tracking-[-0.18px]">Começar<span class="-mr-3 p-1 !size-8 bg-nd-inverse text-nd-cta rounded-full inline-flex items-center justify-center"><svg aria-hidden="true" class="lucide lucide-arrow-right !size-[16px] block" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></button>
+        <button aria-label="Começar" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 h-11 px-6 rounded-full md:h-[48px] nd-body-m !px-5 py-3 bg-nd-cta text-nd-inverse hover:!bg-nd-primary/90 tracking-[-0.16px] md:tracking-[-0.18px]" disabled="">Disabled<span class="-mr-3 p-1 !size-8 bg-nd-inverse text-nd-cta rounded-full inline-flex items-center justify-center"><svg aria-hidden="true" class="lucide lucide-arrow-right !size-[16px] block" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></button>
+      </div>
+
+      <!-- Outline Button -->
+      <div class="ds-component-row">
+        <div class="ds-component-label">Outline</div>
+        <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 rounded-full border-[1px] border-nd-border-prominent not-hover:bg-transparent hover:bg-nd-border-prominent px-6 h-12 w-auto nd-body-m text-inherit" href="#">Ver tudo</a>
+      </div>
+
+      <!-- Small CTA -->
+      <div class="ds-component-row">
+        <div class="ds-component-label">CTA Small / Inverted</div>
+        <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 px-6 rounded-full font-normal nd-body-s tracking-[-0.1em] !px-4 py-[6px] h-8 bg-nd-inverse text-nd-primary hover:!bg-nd-inverse/90" href="#">Explore SDP</a>
+      </div>
+
+      <!-- Brand Mono Button Dark -->
+      <div class="ds-component-row">
+        <div class="ds-component-label">Brand Mono (Cookie)</div>
+        <button class="font-brand-mono font-normal uppercase w-fit align-middle cursor-pointer select-none text-center active:translate-y-0 disabled:opacity-65 disabled:pointer-events-none bg-black text-white border border-white [&amp;:not([disabled])]:hover:!bg-white [&amp;:not([disabled])]:hover:text-black [&amp;:not([disabled])]:hover:border-black [&amp;:not([disabled])]:active:!bg-white [&amp;:not([disabled])]:active:text-black [&amp;:not([disabled])]:active:border-black [&amp;:not([disabled])]:focus:!bg-white [&amp;:not([disabled])]:focus:text-black [&amp;:not([disabled])]:focus:border-black py-[0.5625rem] px-4 rounded-[2.25rem] text-[0.95rem] leading-5 transition-[box-shadow,transform] duration-[250ms] ease-[ease] [&amp;:not([disabled])]:hover:![box-shadow:0_1rem_2.5rem_rgba(35,35,35,0.1),0_0.5rem_1rem_-0.75rem_rgba(35,35,35,0.1)] [&amp;:not([disabled])]:hover:-translate-y-[3px] [&amp;:not([disabled])]:focus:-translate-y-[3px] inline-block disabled:opacity-[0.65] disabled:pointer-events-none" type="button">Aceitar</button>
+        <button class="font-brand-mono font-normal uppercase w-fit align-middle cursor-pointer select-none text-center active:translate-y-0 disabled:opacity-65 disabled:pointer-events-none bg-transparent text-white border border-transparent [&amp;:not([disabled])]:hover:!bg-transparent [&amp;:not([disabled])]:hover:text-white [&amp;:not([disabled])]:hover:border-transparent [&amp;:not([disabled])]:active:!bg-transparent [&amp;:not([disabled])]:active:text-white [&amp;:not([disabled])]:active:border-transparent [&amp;:not([disabled])]:focus:!bg-transparent [&amp;:not([disabled])]:focus:text-white [&amp;:not([disabled])]:focus:border-transparent py-[0.5625rem] px-4 rounded-[2.25rem] text-[0.95rem] leading-5 !border-transparent transition-[box-shadow,transform] duration-[250ms] ease-[ease] [&amp;:not([disabled])]:hover:![box-shadow:0_1rem_2.5rem_rgba(35,35,35,0.1),0_0.5rem_1rem_-0.75rem_rgba(35,35,35,0.1)] [&amp;:not([disabled])]:hover:-translate-y-[3px] [&amp;:not([disabled])]:focus:-translate-y-[3px] inline-block disabled:opacity-[0.65] disabled:pointer-events-none !px-0" type="button">Recusar</button>
+      </div>
+
+      <!-- Carousel Buttons -->
+      <div class="ds-component-row">
+        <div class="ds-component-label">Carousel Nav</div>
+        <button aria-label="Previous" class="rounded-full w-12 h-12 p-1 border-[1px] border-nd-border-prominent transition flex items-center justify-center not-hover:bg-black hover:bg-nd-border-prominent"><svg class="lucide lucide-chevron-left w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg></button>
+        <button aria-label="Next" class="rounded-full w-12 h-12 p-1 border-[1px] border-nd-border-prominent transition flex items-center justify-center not-hover:bg-black hover:bg-nd-border-prominent"><svg class="lucide lucide-chevron-right w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg></button>
+        <button aria-label="Previous" class="rounded-full w-12 h-12 p-1 border-[1px] border-nd-border-prominent transition flex items-center justify-center not-hover:bg-black hover:bg-nd-border-prominent opacity-50 cursor-not-allowed" disabled=""><svg class="lucide lucide-chevron-left w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg></button>
+        <span class="ds-label">default / hover / disabled</span>
+      </div>
+    </div>
+
+    <!-- ── Cards ── -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Cards</h3>
+
+      <!-- Promotional Card (Hero embed) -->
+      <div class="ds-component-row" style="flex-direction: column; align-items: flex-start;">
+        <div class="ds-component-label" style="width: auto;">Promotional Card (Hero)</div>
+        <div class="overflow-hidden w-full md:w-[504px]">
+          <div class="w-full flex flex-row items-stretch p-2 bg-[#DFCDF5] text-nd-inverse md:rounded-xl bg-blend-screen">
+            <div class="grow-0 shrink-0 mr-3 md:mr-5 pb-10 md:pb-0">
+              <img alt="" class="!h-auto w-[74px] md:w-[153px] rounded-lg md:rounded-sm aspect-square" data-nimg="1" decoding="async" height="153" loading="lazy" src="assets/image_ca532d82cbb4.png" srcset="assets/image_33f0a1333493 1x, assets/image_ca532d82cbb4.png 2x" style="color:transparent;object-fit:cover" width="153"/>
+            </div>
+            <div class="grow flex flex-col justify-between md:py-1.5 xl:py-2 md:pr-2">
+              <div class="max-md:py-1 max-md:pr-1">
+                <p class="font-medium nd-body-l">Solana Developer Platform</p>
+                <p class="nd-body-s opacity-[0.64]">Build, deploy, and scale on Solana with enterprise-grade tools and infrastructure.</p>
+              </div>
+              <div class="mt-2 md:mt-3">
+                <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 px-6 rounded-full font-normal nd-body-s tracking-[-0.1em] !px-4 py-[6px] h-8 bg-nd-inverse text-nd-primary hover:!bg-nd-inverse/90" href="#">Explore SDP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institution Card -->
+      <div class="ds-component-row" style="flex-direction: column; align-items: flex-start;">
+        <div class="ds-component-label" style="width: auto;">Institution Card</div>
+        <div class="rounded-2xl border-nd-border-light border-[1px] bg-nd-inverse overflow-hidden relative" style="max-width: 400px;">
+          <div class="relative grid grid-cols-1">
+            <article aria-label="Western Union" class="relative group shrink-0 p-[24px_20px] xl:p-8 flex flex-col justify-between xl:min-h-[360px] border-nd-border-light">
+              <div class="relative">
+                <div class="relative h-6 xl:h-8"><img alt="Western Union" class="object-contain w-auto" data-nimg="fill" decoding="async" loading="lazy" src="assets/western-union_f1aeac405466.svg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/></div>
+              </div>
+              <div class="mt-8 mb-0 relative">
+                <div class="text-[24px] xl:text-[40px] leading-[1.33] xl:leading-[1.2] mb-1 uppercase">USDPT</div>
+                <div class="nd-body-m font-medium">Stablecoin com lançamento em 2026</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Action Card -->
+      <div class="ds-component-row" style="flex-direction: column; align-items: flex-start;">
+        <div class="ds-component-label" style="width: auto;">Community Action Card</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1" style="max-width: 900px;">
+          <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+            <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M26.668 10v3.334h3.333M26.668 10V6.667h6.667v6.667H30M26.668 10H13.335M10 13.334v13.333M13.335 30h13.333m3.333-3.333V13.334M6.668 6.667h6.667v6.667H6.668zm0 20h6.667v6.667H6.668zm20 0h6.667v6.667h-6.667z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg></div>
+            <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Valide a rede</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">Execute um validator para ajudar a manter a rede rápida e segura para todos.</p></div>
+          </a>
+          <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+            <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="m17.501 15-5 5 5 5m5-10 5 5-5 5M6.668 6.667h26.667v26.667H6.668z" stroke="currentColor" stroke-width="2"></path></svg></div>
+            <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Contribua com código</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">Escreva código de código aberto e receba pagamentos através de subsídios do ecossistema.</p></div>
+          </a>
+          <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+            <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M15 20a10 10 0 0 1 10-10c5.523 0 10 4.477 10 10s-4.477 10-10 10a10 10 0 0 1-10-10Z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg></div>
+            <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Tokenize um ativo</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">Transforme ativos do mundo real em tokens para torná-los mais fáceis de negociar.</p></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- News Card -->
+      <div class="ds-component-row" style="flex-direction: column; align-items: flex-start;">
+        <div class="ds-component-label" style="width: auto;">News Card</div>
+        <div style="max-width: 700px; width: 100%;">
+          <div class="flex flex-col xl:flex-row w-full self-start min-w-0">
+            <div class="relative w-full xl:w-2/3 aspect-[16/9] rounded-tl-xl rounded-tr-xl xl:rounded-tr-none xl:rounded-bl-xl overflow-hidden group">
+              <img alt="Solana Foundation Launches Solana Developer Platform" class="object-cover z-0" data-nimg="fill" decoding="async" loading="lazy" sizes="(max-width: 1280px) 100vw, 66vw" src="assets/image_7f29097513f1.jpg" srcset="assets/image_246f4d400a11.jpg 640w, assets/image_be6bf1427db2.jpg 750w, assets/image_d16585b0ba47.jpg 828w, assets/image_c24a9e2d4161.jpg 1080w, assets/image_ccfffc4c48f1.jpg 1200w, assets/image_1d68ec04d578 1920w, assets/image_1891c8ad04a6.jpg 2048w, assets/image_7f29097513f1.jpg 3840w" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/>
+            </div>
+            <div class="w-full xl:w-1/3 bg-[#0D0C11] p-5 xl:p-8 rounded-bl-xl rounded-br-xl xl:rounded-bl-none xl:rounded-tr-xl xl:flex xl:flex-1 xl:flex-col min-w-0 overflow-hidden">
+              <h3 class="nd-heading-m xl:order-1 line-clamp-4">Solana Foundation Launches Solana Developer Platform</h3>
+              <p class="text-nd-mid-em-text nd-body-l font-medium max-xl:mt-3 xl:mt-8 xl:pt-8 xl:border-t xl:border-nd-border-light xl:order-3 line-clamp-5">Solana Foundation launches Solana Developer Platform, a unified API platform for institutions.</p>
+              <div class="mt-[25px] xl:mt-8 xl:order-2 xl:grow">
+                <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 rounded-full border-[1px] border-nd-border-prominent not-hover:bg-transparent hover:bg-nd-border-prominent px-6 h-12 w-auto nd-body-m text-inherit" href="#">Leia mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Card -->
+      <div class="ds-component-row" style="flex-direction: column; align-items: flex-start;">
+        <div class="ds-component-label" style="width: auto;">Stat Card (with accent line)</div>
+        <div class="w-full xl:w-[35%] relative before:absolute before:top-0 before:left-0 before:w-px before:h-full before:bg-gradient-to-b before:from-[#D884F0] before:to-[#44EBA6]" style="min-width: 320px;">
+          <div class="py-5 px-3 md:px-8 xl:py-8 flex flex-row gap-4 md:gap-8 xl:gap-[28px] border-nd-border-light">
+            <div><img alt="" class="xl:size-10 md:size-7" data-nimg="1" decoding="async" height="28" loading="lazy" src="assets/steps_5cd67030048c.svg" style="color:transparent" width="28"/></div>
+            <div>
+              <div class="text-[28px] xl:text-[40px] leading-[1.14] xl:leading-[1] font-light uppercase"><span>500,434,023,774</span></div>
+              <div class="mt-1.5 md:mt-1 xl:mt-3 text-[16px] md:text-[18px] leading-[1.33] font-medium">Total de transações até o momento</div>
+            </div>
+          </div>
+          <div class="py-5 px-3 md:px-8 xl:py-8 flex flex-row gap-4 md:gap-8 xl:gap-[28px] border-nd-border-light border-t">
+            <div><img alt="" class="xl:size-10 md:size-7" data-nimg="1" decoding="async" height="28" loading="lazy" src="assets/speed_a69781b10623.svg" style="color:transparent" width="28"/></div>
+            <div>
+              <div class="text-[28px] xl:text-[40px] leading-[1.14] xl:leading-[1] font-light uppercase"><span>3.396</span></div>
+              <div class="mt-1.5 md:mt-1 xl:mt-3 text-[16px] md:text-[18px] leading-[1.33] font-medium">Transações por segundo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     4) LAYOUT & SPACING
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="layout">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">04 — Layout &amp; Spacing</div>
+    <h2 class="nd-heading-l">Containers, grids<br/><span class="font-light">e padrões de layout.</span></h2>
+
+    <!-- Container Demo -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Container Principal</h3>
+      <div class="border border-nd-border-light rounded-xl p-6">
+        <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 border border-dashed border-[rgba(240,228,255,0.2)] rounded-lg p-4">
+          <span class="ds-label">max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10</span>
+          <div class="mt-2 text-nd-mid-em-text nd-body-s">Container principal com padding responsivo (20px → 32px → 40px)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Layout Pattern -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Padrão: Hero Layout</h3>
+      <div class="border border-nd-border-light rounded-xl overflow-hidden relative" style="min-height: 400px;">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0B0A10] to-transparent opacity-50"></div>
+        <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 flex flex-col justify-between relative pt-12 xl:pt-[80px] pb-8 xl:pb-10">
+          <div class="max-w-5xl">
+            <div class="border border-dashed border-[rgba(240,228,255,0.2)] rounded-lg p-4 mb-4">
+              <span class="ds-label">max-w-5xl</span>
+              <h2 class="nd-heading-l mt-2">Título do Hero</h2>
+              <p class="text-nd-mid-em-text nd-body-xl mt-4 xl:max-w-[440px]">Descrição do hero com largura máxima controlada.</p>
+            </div>
+            <div class="border border-dashed border-[rgba(240,228,255,0.2)] rounded-lg p-4 mt-[52px]">
+              <span class="ds-label">mt-[52px]</span>
+              <div class="mt-2">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 h-11 px-6 rounded-full md:h-[48px] nd-body-m !px-5 py-3 bg-nd-cta text-nd-inverse hover:!bg-nd-primary/90 tracking-[-0.16px] md:tracking-[-0.18px]">CTA Button</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Pattern: 4 columns -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Padrão: Grid 4 Colunas (Stats)</h3>
+      <div class="grid grid-cols-2 w-full xl:grid-cols-4 border border-nd-border-light rounded-xl overflow-hidden">
+        <div class="p-4 md:p-8 xl:px-10 flex flex-col justify-between gap-4 max-xl:border-b border-nd-border-light xl:pl-0 max-xl:border-t">
+          <div>
+            <div class="text-[20px] xl:text-[40px] leading-none font-light uppercase">50M</div>
+            <div class="mt-1.5 md:mt-1 xl:mt-3 text-[14px] md:text-[18px] leading-[1.33] font-medium">Endereços ativos mensais</div>
+          </div>
+        </div>
+        <div class="p-4 md:p-8 xl:px-10 flex flex-col justify-between gap-4 max-xl:border-b border-nd-border-light border-l max-xl:border-t xl:border-l">
+          <div>
+            <div class="text-[20px] xl:text-[40px] leading-none font-light uppercase">$260B+</div>
+            <div class="mt-1.5 md:mt-1 xl:mt-3 text-[14px] md:text-[18px] leading-[1.33] font-medium">Volume total 24h</div>
+          </div>
+        </div>
+        <div class="p-4 md:p-8 xl:px-10 flex flex-col justify-between gap-4 max-xl:border-b border-nd-border-light xl:border-l">
+          <div>
+            <div class="text-[20px] xl:text-[40px] leading-none font-light uppercase">$17B+</div>
+            <div class="mt-1.5 md:mt-1 xl:mt-3 text-[14px] md:text-[18px] leading-[1.33] font-medium">Stablecoins na Solana</div>
+          </div>
+        </div>
+        <div class="p-4 md:p-8 xl:px-10 flex flex-col justify-between gap-4 border-nd-border-light border-l">
+          <div>
+            <div class="text-[20px] xl:text-[40px] leading-none font-light uppercase">6x</div>
+            <div class="mt-1.5 md:mt-1 xl:mt-3 text-[14px] md:text-[18px] leading-[1.33] font-medium">Crescimento de desenvolvedores</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Pattern: Institution 2x2 / 4 cols -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Padrão: Grid Institutions (2×2 → 4 cols)</h3>
+      <div class="rounded-2xl border-nd-border-light border-[1px] bg-nd-inverse overflow-hidden relative">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+          <article class="relative group shrink-0 p-[24px_20px] xl:p-8 flex flex-col justify-between xl:min-h-[280px] border-nd-border-light max-md:border-r-0 max-xl:border-r xl:border-r">
+            <div class="relative"><div class="relative h-6 xl:h-8"><img alt="Western Union" class="object-contain w-auto" data-nimg="fill" decoding="async" loading="lazy" src="assets/western-union_f1aeac405466.svg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/></div></div>
+            <div class="mt-8 mb-0 relative"><div class="text-[24px] xl:text-[40px] leading-[1.33] xl:leading-[1.2] mb-1 uppercase">USDPT</div><div class="nd-body-m font-medium">Stablecoin 2026</div></div>
+          </article>
+          <article class="relative group shrink-0 p-[24px_20px] xl:p-8 flex flex-col justify-between xl:min-h-[280px] border-nd-border-light xl:border-r max-md:border-t">
+            <div class="relative"><div class="relative h-6 xl:h-8"><img alt="Visa" class="object-contain w-auto" data-nimg="fill" decoding="async" loading="lazy" src="assets/visa_e8fa25ff8025.svg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/></div></div>
+            <div class="mt-8 mb-0 relative"><div class="text-[24px] xl:text-[40px] leading-[1.33] xl:leading-[1.2] mb-1 uppercase">USDC</div><div class="nd-body-m font-medium">Stablecoin settlement</div></div>
+          </article>
+          <article class="relative group shrink-0 p-[24px_20px] xl:p-8 flex flex-col justify-between xl:min-h-[280px] border-nd-border-light max-md:border-r-0 max-xl:border-r xl:border-r max-xl:border-t max-md:border-t">
+            <div class="relative"><div class="relative h-6 xl:h-8"><img alt="PayPal" class="object-contain w-auto" data-nimg="fill" decoding="async" loading="lazy" src="assets/paypal_9f80498746b8.svg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/></div></div>
+            <div class="mt-8 mb-0 relative"><div class="text-[24px] xl:text-[40px] leading-[1.33] xl:leading-[1.2] mb-1 uppercase">PYUSD</div><div class="nd-body-m font-medium">Digital payments</div></div>
+          </article>
+          <article class="relative group shrink-0 p-[24px_20px] xl:p-8 flex flex-col justify-between xl:min-h-[280px] border-nd-border-light max-xl:border-t max-md:border-t">
+            <div class="relative"><div class="relative h-6 xl:h-8"><img alt="Fiserv" class="object-contain w-auto" data-nimg="fill" decoding="async" loading="lazy" src="assets/fiserv_c690aeace0e5.svg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/></div></div>
+            <div class="mt-8 mb-0 relative"><div class="text-[24px] xl:text-[40px] leading-[1.33] xl:leading-[1.2] mb-1 uppercase">RTP</div><div class="nd-body-m font-medium">Real-time payments</div></div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Split Layout Pattern -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Padrão: Split Layout (Heading + Content)</h3>
+      <div class="border border-nd-border-light rounded-xl p-6">
+        <div class="flex flex-col xl:flex-row gap-[52px] justify-between items-start">
+          <div class="xl:max-w-[50%] grow-0 border border-dashed border-[rgba(240,228,255,0.2)] rounded-lg p-4">
+            <span class="ds-label">xl:max-w-[50%]</span>
+            <h2 class="nd-heading-l mt-2">Título principal<br/><span class="font-light">com subtítulo light</span></h2>
+            <p class="text-nd-mid-em-text nd-body-xl max-md:mt-3 md:mt-[35px] xl:mt-8">Texto descritivo que acompanha o heading, ocupando no máximo metade da largura em desktop.</p>
+          </div>
+          <div class="w-full xl:w-[35%] relative before:absolute before:top-0 before:left-0 before:w-px before:h-full before:bg-gradient-to-b before:from-[#D884F0] before:to-[#44EBA6] border border-dashed border-[rgba(240,228,255,0.2)] rounded-lg p-4">
+            <span class="ds-label">xl:w-[35%] + gradient accent line</span>
+            <div class="mt-4 pl-4">
+              <div class="text-[28px] xl:text-[40px] leading-[1.14] xl:leading-[1] font-light uppercase">3.396</div>
+              <div class="mt-1.5 nd-body-m font-medium">Stat content area</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     5) MOTION & INTERACTION
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="motion">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">05 — Motion &amp; Interaction</div>
+    <h2 class="nd-heading-l">Animações e<br/><span class="font-light">comportamentos de interação.</span></h2>
+    <p class="text-nd-mid-em-text nd-body-xl max-md:mt-3 md:mt-5 xl:mt-5 xl:max-w-[500px]">Todas as animações presentes no design original. Passe o mouse para ver cada efeito.</p>
+
+    <!-- Motion Gallery -->
+    <div class="mt-10 xl:mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+
+      <!-- animate-fade-in-up -->
+      <div class="ds-motion-card ds-replay" id="motion-fade-in-up">
+        <div class="ds-motion-trigger">Hover para replay</div>
+        <div class="h-16 flex items-center justify-center">
+          <div class="w-20 h-10 bg-nd-cta rounded-lg" style="opacity:1;"></div>
+        </div>
+        <div>
+          <span class="nd-body-m font-medium">Fade In Up</span>
+          <div class="nd-body-s text-nd-mid-em-text mt-1">animate-fade-in-up</div>
+          <div class="nd-body-s text-nd-mid-em-text">Entrada de elementos de conteúdo e stat cards</div>
+        </div>
+      </div>
+
+      <!-- animate-curtain-left-to-right -->
+      <div class="ds-motion-card ds-replay" id="motion-curtain-lr">
+        <div class="ds-motion-trigger">Hover para replay</div>
+        <div class="h-16 flex items-center justify-center overflow-hidden">
+          <div class="w-full h-10 bg-nd-border-light rounded-lg" style="opacity:1;"></div>
+        </div>
+        <div>
+          <span class="nd-body-m font-medium">Curtain Left→Right</span>
+          <div class="nd-body-s text-nd-mid-em-text mt-1">animate-curtain-left-to-right</div>
+          <div class="nd-body-s text-nd-mid-em-text">Reveal de elementos laterais e categorias</div>
+        </div>
+      </div>
+
+      <!-- animate-curtain-top-to-bottom -->
+      <div class="ds-motion-card ds-replay" id="motion-curtain-tb">
+        <div class="ds-motion-trigger">Hover para replay</div>
+        <div class="h-16 flex items-center justify-center overflow-hidden">
+          <div class="w-10 h-full bg-nd-border-light rounded-lg" style="opacity:1;"></div>
+        </div>
+        <div>
+          <span class="nd-body-m font-medium">Curtain Top→Bottom</span>
+          <div class="nd-body-s text-nd-mid-em-text mt-1">animate-curtain-top-to-bottom</div>
+          <div class="nd-body-s text-nd-mid-em-text">Reveal vertical de content blocks</div>
+        </div>
+      </div>
+
+      <!-- animate-stretch-in -->
+      <div class="ds-motion-card ds-replay" id="motion-stretch-in">
+        <div class="ds-motion-trigger">Hover para replay</div>
+        <div class="h-16 flex items-center justify-center">
+          <div class="w-20 h-10 bg-nd-cta rounded-lg" style="opacity:1;"></div>
+        </div>
+        <div>
+          <span class="nd-body-m font-medium">Stretch In</span>
+          <div class="nd-body-s text-nd-mid-em-text mt-1">animate-stretch-in</div>
+          <div class="nd-body-s text-nd-mid-em-text">Animação de entrada com scale e fade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Animation Demos -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Demonstrações ao vivo</h3>
+
+      <div class="flex flex-col gap-6">
+        <!-- Fade in up with stagger -->
+        <div class="border border-nd-border-light rounded-xl p-6">
+          <div class="ds-label mb-4">animate-fade-in-up com animation-delay stagger</div>
+          <div class="grid grid-cols-2 xl:grid-cols-4 gap-4" id="demo-fade-stagger">
+            <div class="p-4 bg-nd-border-light rounded-lg animate-fade-in-up" style="animation-delay: 0.1s;">
+              <div class="text-[20px] font-light uppercase">Item 1</div>
+              <div class="nd-body-s text-nd-mid-em-text mt-1">delay: 0.1s</div>
+            </div>
+            <div class="p-4 bg-nd-border-light rounded-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+              <div class="text-[20px] font-light uppercase">Item 2</div>
+              <div class="nd-body-s text-nd-mid-em-text mt-1">delay: 0.2s</div>
+            </div>
+            <div class="p-4 bg-nd-border-light rounded-lg animate-fade-in-up" style="animation-delay: 0.3s;">
+              <div class="text-[20px] font-light uppercase">Item 3</div>
+              <div class="nd-body-s text-nd-mid-em-text mt-1">delay: 0.3s</div>
+            </div>
+            <div class="p-4 bg-nd-border-light rounded-lg animate-fade-in-up" style="animation-delay: 0.4s;">
+              <div class="text-[20px] font-light uppercase">Item 4</div>
+              <div class="nd-body-s text-nd-mid-em-text mt-1">delay: 0.4s</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curtain reveals -->
+        <div class="border border-nd-border-light rounded-xl p-6">
+          <div class="ds-label mb-4">animate-curtain-left-to-right com stagger</div>
+          <div class="flex flex-col gap-2">
+            <div class="h-12 bg-nd-border-light rounded-lg animate-curtain-left-to-right flex items-center px-4" style="animation-delay: 0s;">
+              <span class="nd-body-s">Row 1 — delay: 0s</span>
+            </div>
+            <div class="h-12 bg-nd-border-light rounded-lg animate-curtain-left-to-right flex items-center px-4" style="animation-delay: 0.15s;">
+              <span class="nd-body-s">Row 2 — delay: 0.15s</span>
+            </div>
+            <div class="h-12 bg-nd-border-light rounded-lg animate-curtain-left-to-right flex items-center px-4" style="animation-delay: 0.3s;">
+              <span class="nd-body-s">Row 3 — delay: 0.3s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button hover transitions -->
+        <div class="border border-nd-border-light rounded-xl p-6">
+          <div class="ds-label mb-4">Hover transitions em botões</div>
+          <div class="flex flex-wrap gap-4 items-center">
+            <button aria-label="CTA hover" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 hover:bg-[#7b47ff]/90 h-11 px-6 rounded-full md:h-[48px] nd-body-m !px-5 py-3 bg-nd-cta text-nd-inverse hover:!bg-nd-primary/90 tracking-[-0.16px] md:tracking-[-0.18px]">Hover me (CTA)</button>
+            <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 rounded-full border-[1px] border-nd-border-prominent not-hover:bg-transparent hover:bg-nd-border-prominent px-6 h-12 w-auto nd-body-m text-inherit" href="#">Hover me (Outline)</a>
+            <button class="font-brand-mono font-normal uppercase w-fit align-middle cursor-pointer select-none text-center active:translate-y-0 disabled:opacity-65 disabled:pointer-events-none bg-black text-white border border-white [&amp;:not([disabled])]:hover:!bg-white [&amp;:not([disabled])]:hover:text-black [&amp;:not([disabled])]:hover:border-black [&amp;:not([disabled])]:active:!bg-white [&amp;:not([disabled])]:active:text-black [&amp;:not([disabled])]:active:border-black [&amp;:not([disabled])]:focus:!bg-white [&amp;:not([disabled])]:focus:text-black [&amp;:not([disabled])]:focus:border-black py-[0.5625rem] px-4 rounded-[2.25rem] text-[0.95rem] leading-5 transition-[box-shadow,transform] duration-[250ms] ease-[ease] [&amp;:not([disabled])]:hover:![box-shadow:0_1rem_2.5rem_rgba(35,35,35,0.1),0_0.5rem_1rem_-0.75rem_rgba(35,35,35,0.1)] [&amp;:not([disabled])]:hover:-translate-y-[3px] [&amp;:not([disabled])]:focus:-translate-y-[3px] inline-block disabled:opacity-[0.65] disabled:pointer-events-none" type="button">Hover me (Brand)</button>
+            <button aria-label="Nav" class="rounded-full w-12 h-12 p-1 border-[1px] border-nd-border-prominent transition flex items-center justify-center not-hover:bg-black hover:bg-nd-border-prominent"><svg class="lucide lucide-chevron-right w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg></button>
+          </div>
+        </div>
+
+        <!-- Card hover lift -->
+        <div class="border border-nd-border-light rounded-xl p-6">
+          <div class="ds-label mb-4">Card hover: bg-nd-border-light → bg-nd-mid-em-text-alpha/20</div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+              <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M26.668 10v3.334h3.333M26.668 10V6.667h6.667v6.667H30M26.668 10H13.335M10 13.334v13.333M13.335 30h13.333m3.333-3.333V13.334M6.668 6.667h6.667v6.667H6.668zm0 20h6.667v6.667H6.668zm20 0h6.667v6.667h-6.667z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg></div>
+              <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Hover this card</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">O background muda suavemente no hover.</p></div>
+            </a>
+            <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+              <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="m17.501 15-5 5 5 5m5-10 5 5-5 5M6.668 6.667h26.667v26.667H6.668z" stroke="currentColor" stroke-width="2"></path></svg></div>
+              <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Hover this card</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">O background muda suavemente no hover.</p></div>
+            </a>
+            <a class="flex max-md:flex-row md:flex-col items-start gap-3 md:gap-12 px-4 py-5 md:px-6 md:py-8 rounded-xl bg-nd-border-light hover:bg-nd-mid-em-text-alpha/20 backdrop-blur-[8px] text-inherit" href="#">
+              <div class="shrink-0 grow-0"><svg class="block w-5 h-5 md:w-10 md:h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M15 20a10 10 0 0 1 10-10c5.523 0 10 4.477 10 10s-4.477 10-10 10a10 10 0 0 1-10-10Z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg></div>
+              <div><h4 class="font-medium nd-body-xl max-xl:!text-[16px]">Hover this card</h4><p class="nd-body-m text-nd-mid-em-text !mt-1 max-xl:!text-[14px]">O background muda suavemente no hover.</p></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Image hover scale -->
+        <div class="border border-nd-border-light rounded-xl p-6">
+          <div class="ds-label mb-4">Image hover: group-hover:scale-110 (com overflow-hidden)</div>
+          <div style="max-width: 300px;">
+            <div class="relative w-full aspect-[16/9] rounded-xl overflow-hidden group cursor-pointer">
+              <img alt="Demo" class="object-cover z-0 transition-all duration-300 group-hover:scale-110" data-nimg="fill" decoding="async" loading="lazy" src="assets/image_7f29097513f1.jpg" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="w-full"><hr class="border-nd-border-light border-t m-0 !opacity-100"/></div>
+
+
+<!-- ════════════════════════════════════════════
+     6) ICONS
+     ════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-nd-inverse text-nd-high-em-text text-left m-0 ds-section" id="icons">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="ds-section-title">06 — Ícones</div>
+    <h2 class="nd-heading-l">Sistema de ícones<br/><span class="font-light">e tamanhos.</span></h2>
+    <p class="text-nd-mid-em-text nd-body-xl max-md:mt-3 md:mt-5 xl:mt-5 xl:max-w-[500px]">SVGs inline com herança de cor via currentColor. Dois tamanhos principais: 40×40 (desktop) e 20×20 (mobile).</p>
+
+    <!-- Lucide Icons (UI) -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Lucide Icons (UI Navigation)</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="lucide lucide-arrow-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text">arrow-right</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="lucide lucide-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text">chevron-left</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="lucide lucide-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text">chevron-right</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M17.293 8.293a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.383.03l-6-5.5a1 1 0 1 1 1.352-1.474l5.294 4.853z" fill="currentColor"></path></g></svg>
+          <span class="nd-body-s text-nd-mid-em-text">chevron-down</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg aria-hidden="true" class="lucide lucide-arrow-right !size-[16px] block" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text">arrow-right (bold)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Icons (Community) -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Custom Icons (Community Cards)</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="block w-10 h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M26.668 10v3.334h3.333M26.668 10V6.667h6.667v6.667H30M26.668 10H13.335M10 13.334v13.333M13.335 30h13.333m3.333-3.333V13.334M6.668 6.667h6.667v6.667H6.668zm0 20h6.667v6.667H6.668zm20 0h6.667v6.667h-6.667z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text text-center">Validator</span>
+          <span class="ds-spec">40×40</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="block w-10 h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="m17.501 15-5 5 5 5m5-10 5 5-5 5M6.668 6.667h26.667v26.667H6.668z" stroke="currentColor" stroke-width="2"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text text-center">Code</span>
+          <span class="ds-spec">40×40</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="block w-10 h-10" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M15 20a10 10 0 0 1 10-10c5.523 0 10 4.477 10 10s-4.477 10-10 10a10 10 0 0 1-10-10Z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text text-center">Tokenize</span>
+          <span class="ds-spec">40×40</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="block w-5 h-5" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M26.668 10v3.334h3.333M26.668 10V6.667h6.667v6.667H30M26.668 10H13.335M10 13.334v13.333M13.335 30h13.333m3.333-3.333V13.334M6.668 6.667h6.667v6.667H6.668zm0 20h6.667v6.667H6.668zm20 0h6.667v6.667h-6.667z" stroke="currentColor" stroke-linecap="square" stroke-width="2"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text text-center">Validator (mobile)</span>
+          <span class="ds-spec">20×20</span>
+        </div>
+        <div class="flex flex-col items-center gap-3 p-6 border border-nd-border-light rounded-xl">
+          <svg class="block w-5 h-5" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg"><path d="m17.501 15-5 5 5 5m5-10 5 5-5 5M6.668 6.667h26.667v26.667H6.668z" stroke="currentColor" stroke-width="2"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text text-center">Code (mobile)</span>
+          <span class="ds-spec">20×20</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solana Mini Logo -->
+    <div class="mt-10 xl:mt-16">
+      <h3 class="nd-heading-s mb-8">Solana Logo (Ícone &amp; Marca)</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="flex flex-col items-center gap-4 p-8 border border-nd-border-light rounded-xl">
+          <svg class="block w-[134px]" fill="none" height="40" style="color:currentColor" viewBox="0 0 149 22" width="134" xmlns="http://www.w3.org/2000/svg"><mask height="23" id="ds-full-mask" maskUnits="userSpaceOnUse" style="mask-type:luminance" width="149" x="0" y="0"><path d="M0 0h149v22.142H0z" fill="#fff"></path></mask><g mask="url(#ds-full-mask)"><path d="m25.033 17.458-4.087 4.382a.95.95 0 0 1-.692.302H.879a.476.476 0 0 1-.348-.798l4.082-4.382a.95.95 0 0 1 .692-.302H24.68a.473.473 0 0 1 .353.798m-4.087-8.827a.96.96 0 0 0-.692-.302H.879a.475.475 0 0 0-.348.798l4.082 4.385a.96.96 0 0 0 .692.302H24.68a.476.476 0 0 0 .346-.798zM.879 5.483h19.375a.95.95 0 0 0 .692-.302L25.033.798a.475.475 0 0 0-.09-.724A.47.47 0 0 0 24.68 0H5.305a.95.95 0 0 0-.692.302L.531 4.685a.475.475 0 0 0 .348.798" fill="url(#ds-full-grad)"></path><path d="M48.653 9.365H38.288V5.95h13.06V2.538H38.252a3.407 3.407 0 0 0-3.425 3.388v3.46a3.406 3.406 0 0 0 3.425 3.392h10.38v3.414H35.075v3.413h13.578a3.41 3.41 0 0 0 3.425-3.388v-3.46a3.406 3.406 0 0 0-3.425-3.392m20.08-6.827H58.33a3.407 3.407 0 0 0-3.434 3.388v10.291a3.405 3.405 0 0 0 3.434 3.389h10.405a3.407 3.407 0 0 0 3.425-3.389V5.926a3.4 3.4 0 0 0-2.12-3.136 3.4 3.4 0 0 0-1.305-.252Zm-.025 13.654H58.354V5.952h10.35zm36.468-13.654H95.028a3.407 3.407 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.102v5.607h3.46V5.926a3.41 3.41 0 0 0-2.136-3.143 3.4 3.4 0 0 0-1.313-.246Zm-.025 8.047H95.049V5.951h10.102zm40.424-8.047h-10.149a3.406 3.406 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.079v5.607H149V5.926a3.42 3.42 0 0 0-1.011-2.403 3.4 3.4 0 0 0-2.414-.985m-.035 8.047h-10.102V5.951h10.102zm-20.066 5.607h-1.384l-4.948-12.224a2.27 2.27 0 0 0-2.113-1.43h-3.07a2.27 2.27 0 0 0-2.283 2.26v14.808h3.46V5.95h1.384l4.945 12.225a2.285 2.285 0 0 0 2.122 1.42h3.07a2.27 2.27 0 0 0 2.283-2.26V2.538h-3.466zm-46.8-13.654h-3.46v13.68a3.405 3.405 0 0 0 3.438 3.388H89.03v-3.414H78.675z" fill="currentColor"></path></g><defs><linearGradient gradientUnits="userSpaceOnUse" id="ds-full-grad" x1="2.494" x2="22.809" y1="22.671" y2="-0.233"><stop offset="0.08" stop-color="#9945FF"></stop><stop offset="0.3" stop-color="#8752F3"></stop><stop offset="0.5" stop-color="#5497D5"></stop><stop offset="0.6" stop-color="#43B4CA"></stop><stop offset="0.72" stop-color="#28E0B9"></stop><stop offset="0.97" stop-color="#19FB9B"></stop></linearGradient></defs></svg>
+          <span class="nd-body-s text-nd-mid-em-text">Full logo — 134px (desktop)</span>
+        </div>
+        <div class="flex flex-col items-center gap-4 p-8 border border-nd-border-light rounded-xl">
+          <svg class="block w-[107px]" fill="none" height="40" style="color:currentColor" viewBox="0 0 149 22" width="107" xmlns="http://www.w3.org/2000/svg"><mask height="23" id="ds-sm-mask" maskUnits="userSpaceOnUse" style="mask-type:luminance" width="149" x="0" y="0"><path d="M0 0h149v22.142H0z" fill="#fff"></path></mask><g mask="url(#ds-sm-mask)"><path d="m25.033 17.458-4.087 4.382a.95.95 0 0 1-.692.302H.879a.476.476 0 0 1-.348-.798l4.082-4.382a.95.95 0 0 1 .692-.302H24.68a.473.473 0 0 1 .353.798m-4.087-8.827a.96.96 0 0 0-.692-.302H.879a.475.475 0 0 0-.348.798l4.082 4.385a.96.96 0 0 0 .692.302H24.68a.476.476 0 0 0 .346-.798zM.879 5.483h19.375a.95.95 0 0 0 .692-.302L25.033.798a.475.475 0 0 0-.09-.724A.47.47 0 0 0 24.68 0H5.305a.95.95 0 0 0-.692.302L.531 4.685a.475.475 0 0 0 .348.798" fill="url(#ds-sm-grad)"></path><path d="M48.653 9.365H38.288V5.95h13.06V2.538H38.252a3.407 3.407 0 0 0-3.425 3.388v3.46a3.406 3.406 0 0 0 3.425 3.392h10.38v3.414H35.075v3.413h13.578a3.41 3.41 0 0 0 3.425-3.388v-3.46a3.406 3.406 0 0 0-3.425-3.392m20.08-6.827H58.33a3.407 3.407 0 0 0-3.434 3.388v10.291a3.405 3.405 0 0 0 3.434 3.389h10.405a3.407 3.407 0 0 0 3.425-3.389V5.926a3.4 3.4 0 0 0-2.12-3.136 3.4 3.4 0 0 0-1.305-.252Zm-.025 13.654H58.354V5.952h10.35zm36.468-13.654H95.028a3.407 3.407 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.102v5.607h3.46V5.926a3.41 3.41 0 0 0-2.136-3.143 3.4 3.4 0 0 0-1.313-.246Zm-.025 8.047H95.049V5.951h10.102zm40.424-8.047h-10.149a3.406 3.406 0 0 0-3.425 3.388v13.68h3.46v-5.607h10.079v5.607H149V5.926a3.42 3.42 0 0 0-1.011-2.403 3.4 3.4 0 0 0-2.414-.985m-.035 8.047h-10.102V5.951h10.102zm-20.066 5.607h-1.384l-4.948-12.224a2.27 2.27 0 0 0-2.113-1.43h-3.07a2.27 2.27 0 0 0-2.283 2.26v14.808h3.46V5.95h1.384l4.945 12.225a2.285 2.285 0 0 0 2.122 1.42h3.07a2.27 2.27 0 0 0 2.283-2.26V2.538h-3.466zm-46.8-13.654h-3.46v13.68a3.405 3.405 0 0 0 3.438 3.388H89.03v-3.414H78.675z" fill="currentColor"></path></g><defs><linearGradient gradientUnits="userSpaceOnUse" id="ds-sm-grad" x1="2.494" x2="22.809" y1="22.671" y2="-0.233"><stop offset="0.08" stop-color="#9945FF"></stop><stop offset="0.3" stop-color="#8752F3"></stop><stop offset="0.5" stop-color="#5497D5"></stop><stop offset="0.6" stop-color="#43B4CA"></stop><stop offset="0.72" stop-color="#28E0B9"></stop><stop offset="0.97" stop-color="#19FB9B"></stop></linearGradient></defs></svg>
+          <span class="nd-body-s text-nd-mid-em-text">Full logo — 107px (mobile)</span>
+        </div>
+        <div class="flex flex-col items-center gap-4 p-8 border border-nd-border-light rounded-xl">
+          <svg class="block w-3 h-3" fill="none" height="12" viewBox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg"><path d="m11.937 8.673-1.98 2.177a.46.46 0 0 1-.336.15H.23a.23.23 0 0 1-.127-.039.242.242 0 0 1-.043-.358l1.98-2.177a.46.46 0 0 1 .334-.15h9.391a.23.23 0 0 1 .128.037.23.23 0 0 1 .103.238.24.24 0 0 1-.06.122m-1.98-4.385a.46.46 0 0 0-.336-.15H.23a.23.23 0 0 0-.127.038.241.241 0 0 0-.043.358l1.98 2.178a.46.46 0 0 0 .334.15h9.391a.23.23 0 0 0 .126-.039.241.241 0 0 0 .042-.357zM.23 2.724h9.39a.45.45 0 0 0 .336-.15L11.937.397a.24.24 0 0 0 .061-.19.24.24 0 0 0-.104-.17.23.23 0 0 0-.128-.037h-9.39a.45.45 0 0 0-.336.15L.061 2.327a.24.24 0 0 0-.042.255.24.24 0 0 0 .085.103.23.23 0 0 0 .126.039" fill="currentColor"></path></svg>
+          <span class="nd-body-s text-nd-mid-em-text">Mini icon — 12px (terminal)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Bottom spacer -->
+<div class="bg-nd-inverse py-20">
+  <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 text-center">
+    <p class="text-nd-mid-em-text nd-body-m">Design System extraído de solana.com/pt — Apenas para referência interna.</p>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.ds-nav a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.ds-nav a').forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + id
+          ? '#fff'
+          : 'rgba(255,255,255,0.55)';
+      });
+    }
+  });
+}, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
