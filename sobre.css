@@ -1,0 +1,412 @@
+:root {
+  color-scheme: dark;
+  --sobre-bg: #07060b;
+  --sobre-surface: rgba(11, 13, 19, 0.92);
+  --sobre-surface-soft: rgba(8, 10, 16, 0.85);
+  --sobre-border: rgba(255, 255, 255, 0.11);
+  --sobre-text: rgba(255, 255, 255, 0.94);
+  --sobre-text-soft: rgba(255, 255, 255, 0.64);
+  --sobre-cyan: #59e1ff;
+  --sobre-violet: #8f5cff;
+  --sobre-emerald: #34dfa8;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--sobre-bg);
+}
+
+body.sobre-body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--sobre-text);
+  -webkit-tap-highlight-color: rgba(89, 225, 255, 0.18);
+  touch-action: manipulation;
+  background:
+    radial-gradient(ellipse 115% 22% at 50% 0%, rgba(143, 92, 255, 0.18), transparent),
+    radial-gradient(ellipse 72% 15% at 8% 22%, rgba(89, 225, 255, 0.08), transparent),
+    radial-gradient(ellipse 64% 13% at 91% 36%, rgba(52, 223, 168, 0.08), transparent),
+    radial-gradient(ellipse 76% 14% at 52% 65%, rgba(143, 92, 255, 0.09), transparent),
+    radial-gradient(ellipse 88% 15% at 50% 98%, rgba(89, 225, 255, 0.05), transparent),
+    linear-gradient(180deg, #07060c 0%, #06060a 50%, #07060b 100%);
+}
+
+.sobre-skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 120;
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: #07060b;
+  background: #fff;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.sobre-skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--sobre-cyan);
+  outline-offset: 2px;
+}
+
+.sobre-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sobre-dna {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.4rem, 8vw, 7rem) 0 clamp(3.5rem, 6vw, 5.2rem);
+}
+
+.sobre-dna__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sobre-dna__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 100%);
+  opacity: 0.3;
+  animation: sobreGridPulse 8s ease-in-out infinite;
+}
+
+@keyframes sobreGridPulse {
+  0%,
+  100% { opacity: 0.18; }
+  50% { opacity: 0.32; }
+}
+
+.sobre-dna__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(88px);
+}
+
+.sobre-dna__orb--violet {
+  top: 6%;
+  right: -5%;
+  width: 26rem;
+  height: 26rem;
+  background: rgba(143, 92, 255, 0.2);
+  animation: sobreOrbDriftA 20s ease-in-out infinite;
+}
+
+.sobre-dna__orb--cyan {
+  bottom: -7%;
+  left: -6%;
+  width: 22rem;
+  height: 22rem;
+  background: rgba(89, 225, 255, 0.15);
+  animation: sobreOrbDriftB 22s ease-in-out infinite;
+}
+
+@keyframes sobreOrbDriftA {
+  0%,
+  100% { transform: translate(0, 0); }
+  50% { transform: translate(-2.2rem, 2.4rem); }
+}
+
+@keyframes sobreOrbDriftB {
+  0%,
+  100% { transform: translate(0, 0); }
+  50% { transform: translate(2.8rem, -2.2rem); }
+}
+
+.sobre-dna__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.sobre-dna__scanline {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.008) 2px,
+    rgba(255, 255, 255, 0.008) 4px
+  );
+}
+
+.sobre-dna__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.7rem, 3.5vw, 3.2rem);
+  align-items: center;
+}
+
+.sobre-dna__media {
+  margin: 0;
+  width: 100%;
+  border-radius: 1.9rem;
+  overflow: hidden;
+  border: 1px solid var(--sobre-border);
+  background: rgba(5, 6, 11, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 46px rgba(0, 0, 0, 0.34);
+  aspect-ratio: 1 / 1;
+  position: relative;
+}
+
+.sobre-dna__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5, 8, 16, 0.04) 42%, rgba(3, 5, 11, 0.56) 100%),
+    linear-gradient(120deg, rgba(89, 225, 255, 0.1), transparent 36%);
+}
+
+.sobre-dna__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.07) brightness(0.86);
+  transform: scale(1.01);
+}
+
+.sobre-dna__content {
+  max-width: 40.5rem;
+}
+
+.sobre-pill {
+  margin: 0 0 1rem;
+  width: fit-content;
+  min-height: 2.1rem;
+  padding: 0.34rem 0.9rem 0.34rem 0.58rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(13, 15, 21, 0.96), rgba(9, 11, 16, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.94rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.sobre-pill__icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: inline-flex;
+  color: var(--sobre-emerald);
+}
+
+.sobre-dna__title {
+  margin: 0;
+  max-width: 16ch;
+  line-height: 1.06 !important;
+  letter-spacing: -0.037em !important;
+  text-wrap: balance;
+}
+
+.sobre-dna__lead {
+  margin: 1.25rem 0 0;
+  color: var(--sobre-text-soft);
+  max-width: 35rem;
+  line-height: 1.6 !important;
+  text-wrap: pretty;
+}
+
+.sobre-manifesto {
+  position: relative;
+  padding: clamp(3.1rem, 7vw, 6rem) 0 clamp(4.2rem, 7vw, 6.8rem);
+}
+
+.sobre-manifesto__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sobre-manifesto__beam {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(74rem, 95%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(89, 225, 255, 0.35) 24%,
+    rgba(143, 92, 255, 0.4) 50%,
+    rgba(52, 223, 168, 0.35) 76%,
+    transparent 100%
+  );
+}
+
+.sobre-manifesto__header {
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sobre-manifesto__title {
+  margin: 0;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+  text-wrap: balance;
+}
+
+.sobre-manifesto__text {
+  margin: 1.4rem auto 0;
+  max-width: 47rem;
+  color: var(--sobre-text-soft);
+  line-height: 1.6 !important;
+  text-wrap: pretty;
+}
+
+.sobre-values {
+  margin-top: clamp(2rem, 5vw, 3.25rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.sobre-value-card {
+  min-width: 0;
+  border-radius: 1.6rem;
+  border: 1px solid var(--sobre-border);
+  background:
+    linear-gradient(180deg, rgba(11, 13, 20, 0.95), rgba(6, 8, 13, 0.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 38px rgba(0, 0, 0, 0.28);
+  padding: clamp(1.15rem, 2vw, 1.75rem);
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.sobre-value-card:hover {
+  transform: translateY(-2px);
+}
+
+.sobre-value-card--mission:hover {
+  border-color: rgba(52, 223, 168, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 42px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-value-card--vision:hover {
+  border-color: rgba(89, 225, 255, 0.33);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 42px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-value-card__icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-flex;
+  margin-bottom: 0.78rem;
+}
+
+.sobre-value-card--mission .sobre-value-card__icon {
+  color: var(--sobre-emerald);
+}
+
+.sobre-value-card--vision .sobre-value-card__icon {
+  color: #3f8dff;
+}
+
+.sobre-value-card__title {
+  margin: 0;
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem) !important;
+  letter-spacing: -0.03em !important;
+}
+
+.sobre-value-card__text {
+  margin: 0.8rem 0 0;
+  color: var(--sobre-text-soft);
+  line-height: 1.6 !important;
+  text-wrap: pretty;
+}
+
+@media (min-width: 1024px) {
+  .sobre-dna__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.6rem;
+  }
+
+  .sobre-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.3rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sobre-dna__media {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .sobre-dna__content {
+    margin-inline: auto;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .sobre-dna {
+    padding-top: 4.2rem;
+  }
+
+  .sobre-dna__title {
+    font-size: clamp(2.1rem, 11.3vw, 3.05rem) !important;
+  }
+
+  .sobre-dna__lead {
+    margin-top: 1rem;
+    font-size: 1.24rem !important;
+  }
+
+  .sobre-manifesto__title {
+    font-size: clamp(2rem, 10.2vw, 3rem) !important;
+  }
+
+  .sobre-manifesto__text {
+    font-size: 1.22rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-dna__grid,
+  .sobre-dna__orb,
+  .sobre-value-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

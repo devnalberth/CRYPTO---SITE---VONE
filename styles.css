@@ -210,6 +210,7 @@
   justify-content: center;
   gap: 10px;
   padding: 14px 20px 14px 28px;
+  margin-bottom: 90px;
   border-radius: 9999px;
   border: none;
   font-family: inherit;
@@ -218,6 +219,7 @@
   letter-spacing: -0.01em;
   cursor: pointer;
   color: #fff;
+  text-decoration: none;
   background: linear-gradient(135deg, var(--vone-glow-violet) 0%, #6d28d9 100%);
   box-shadow:
     0 0 0 1px rgba(139, 92, 246, 0.3),
@@ -2541,4 +2543,265 @@
 .vone-footer__copy {
   margin: 0;
   font-size: 13px;
+}
+
+/* ════════════════════════════════════════════════════
+   Footer padrão global (mesmo da tecnologia)
+   ════════════════════════════════════════════════════ */
+
+.tech-footer {
+  position: relative;
+  padding: 4rem 0 calc(3.2rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(8, 8, 12, 0.98), rgba(5, 5, 8, 1));
+  overflow: hidden;
+}
+
+.tech-footer__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tech-footer__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 84px 84px;
+  opacity: 0.24;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 100%);
+}
+
+.tech-footer__frame {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.12rem;
+  align-items: stretch;
+}
+
+.tech-footer__card,
+.tech-footer__nav {
+  min-width: 0;
+  padding: 1.2rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(180deg, rgba(14, 15, 20, 0.96), rgba(8, 9, 13, 0.94));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.tech-footer__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    background 0.24s ease,
+    box-shadow 0.24s ease;
+  animation: techFooterRise 0.62s cubic-bezier(0.2, 0.72, 0.24, 1) both;
+}
+
+.tech-footer__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(89, 225, 255, 0.11), transparent 35%),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.05), transparent 55%);
+  opacity: 0.54;
+}
+
+.tech-footer__card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tech-footer__brand,
+.tech-footer__legal {
+  height: 100%;
+  min-height: 10.4rem;
+}
+
+.tech-footer__card--legal {
+  animation-delay: 0.06s;
+}
+
+.tech-footer__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(89, 225, 255, 0.2);
+  background:
+    linear-gradient(180deg, rgba(16, 18, 24, 0.98), rgba(10, 12, 17, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.tech-footer__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.tech-footer__title {
+  max-width: 16ch;
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.94);
+  text-wrap: balance;
+}
+
+.tech-footer__label {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.tech-footer__copy {
+  margin: 0.85rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.6);
+  text-wrap: pretty;
+}
+
+.tech-footer__nav {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.58rem;
+  padding: 0.62rem 0.7rem;
+  border-radius: 1.45rem;
+  background:
+    linear-gradient(180deg, rgba(11, 13, 18, 0.96), rgba(7, 8, 12, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 34px rgba(0, 0, 0, 0.24);
+  overflow-x: auto;
+  scrollbar-width: none;
+  animation: techFooterRise 0.62s cubic-bezier(0.2, 0.72, 0.24, 1) both;
+  animation-delay: 0.12s;
+}
+
+.tech-footer__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.tech-footer__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.48rem;
+  padding: 0 1.08rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.97rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tech-footer__link.is-active,
+.tech-footer__link[aria-current="page"] {
+  color: rgba(255, 255, 255, 0.98);
+  border-color: rgba(255, 255, 255, 0.26);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.32);
+}
+
+.tech-footer__link:hover {
+  color: #ffffff;
+  border-color: rgba(89, 225, 255, 0.24);
+  background: rgba(89, 225, 255, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+
+.tech-footer__link:focus-visible {
+  outline: 2px solid var(--vone-glow-cyan, #59e1ff);
+  outline-offset: 3px;
+}
+
+@keyframes techFooterRise {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 960px) {
+  .tech-footer__frame {
+    grid-template-columns: minmax(15rem, 0.7fr) minmax(0, 1.3fr);
+    align-items: stretch;
+  }
+
+  .tech-footer__nav {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .tech-footer {
+    padding: 3.2rem 0 calc(3rem + env(safe-area-inset-bottom));
+  }
+
+  .tech-footer__brand,
+  .tech-footer__legal,
+  .tech-footer__nav {
+    padding: 1rem 0.95rem;
+    border-radius: 1.15rem;
+  }
+
+  .tech-footer__nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-footer__link {
+    min-height: 2.3rem;
+    padding: 0 0.92rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-footer__card,
+  .tech-footer__nav,
+  .tech-footer__link {
+    transition: none;
+  }
+
+  .tech-footer__card,
+  .tech-footer__nav {
+    animation: none;
+  }
 }
