@@ -1,6 +1,10 @@
 :root {
   color-scheme: dark;
+  --ea-page-surface: #05050a;
   --ea-bg: #07060b;
+  --ea-cyan: #59e1ff;
+  --ea-violet: #8f5cff;
+  --ea-emerald: #47d7ac;
   --ea-text: rgba(255, 255, 255, 0.94);
   --ea-text-soft: rgba(255, 255, 255, 0.66);
   --ea-text-faint: rgba(255, 255, 255, 0.48);
@@ -19,17 +23,17 @@ body {
   background: var(--ea-bg);
 }
 
+#main-content {
+  background: transparent;
+}
+
 body.ea-body {
   margin: 0;
   overflow-x: hidden;
   color: var(--ea-text);
   -webkit-tap-highlight-color: rgba(89, 225, 255, 0.18);
   touch-action: manipulation;
-  background:
-    radial-gradient(ellipse 90% 35% at 18% 2%, rgba(88, 89, 255, 0.2), transparent 66%),
-    radial-gradient(ellipse 70% 24% at 85% 30%, rgba(10, 216, 164, 0.13), transparent 74%),
-    radial-gradient(ellipse 78% 20% at 50% 94%, rgba(89, 225, 255, 0.08), transparent 72%),
-    linear-gradient(180deg, #08070d 0%, #06060a 56%, #06050a 100%);
+  background: linear-gradient(180deg, var(--ea-page-surface) 0%, var(--ea-bg) 18%, var(--ea-bg) 100%);
 }
 
 .ea-skip-link {
@@ -53,8 +57,10 @@ body.ea-body {
 
 .ea-hero {
   position: relative;
+  min-height: 100vh;
   overflow: hidden;
   isolation: isolate;
+  background-color: var(--ea-page-surface);
   padding: clamp(4.5rem, 8vw, 7.2rem) 0 clamp(3.8rem, 7vw, 6rem);
 }
 
@@ -62,7 +68,7 @@ body.ea-body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 .ea-hero__grid {
@@ -71,76 +77,128 @@ body.ea-body {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 82px 82px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 100%);
-  opacity: 0.3;
-  animation: eaGridPulse 9s ease-in-out infinite;
+  background-size: 80px 80px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 92%);
+  animation: eaGridPulse 7s ease-in-out infinite;
 }
 
 @keyframes eaGridPulse {
-  0%,
-  100% { opacity: 0.2; }
+  0%, 100% { opacity: 0.18; }
   50% { opacity: 0.34; }
+}
+
+.ea-hero__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ea-hero__particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--p-color, var(--ea-cyan));
+  box-shadow: 0 0 7px var(--p-color, var(--ea-cyan));
+  opacity: 0;
+  animation: eaParticleRise 7s ease-out infinite;
+}
+
+@keyframes eaParticleRise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.85; }
+  90% { opacity: 0.25; }
+  100% { transform: translateY(-72px) translateX(18px); opacity: 0; }
 }
 
 .ea-hero__orb {
   position: absolute;
   border-radius: 50%;
+  opacity: 0;
   filter: blur(88px);
 }
 
 .ea-hero__orb--one {
-  top: 4%;
-  right: -4%;
-  width: 28rem;
-  height: 28rem;
-  background: rgba(89, 225, 255, 0.16);
+  top: 7%;
+  right: 8%;
+  width: 30rem;
+  height: 30rem;
+  background: rgba(143, 92, 255, 0.13);
   animation: eaOrbDriftOne 20s ease-in-out infinite;
 }
 
 .ea-hero__orb--two {
-  left: -8%;
-  bottom: 1%;
+  left: -4%;
+  bottom: 10%;
   width: 26rem;
   height: 26rem;
-  background: rgba(21, 207, 151, 0.16);
+  background: rgba(89, 225, 255, 0.09);
   animation: eaOrbDriftTwo 23s ease-in-out infinite;
 }
 
+.ea-hero__orb--three {
+  right: 25%;
+  bottom: 0;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(71, 215, 172, 0.07);
+  animation: eaOrbDriftThree 17s ease-in-out infinite;
+}
+
 @keyframes eaOrbDriftOne {
-  0%,
-  100% { transform: translate(0, 0); }
-  50% { transform: translate(-2.2rem, 3.2rem); }
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-2.5rem, 3.5rem); }
+  66% { transform: translate(2rem, -1.5rem); }
 }
 
 @keyframes eaOrbDriftTwo {
-  0%,
-  100% { transform: translate(0, 0); }
-  50% { transform: translate(2.8rem, -2.1rem); }
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(3rem, -2rem); }
+  66% { transform: translate(-1.5rem, 2.5rem); }
+}
+
+@keyframes eaOrbDriftThree {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2.5rem, -3rem); }
 }
 
 .ea-hero__noise {
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
 }
 
-.ea-hero__scanline {
+.ea-hero__scan-beam {
   position: absolute;
-  inset: 0;
-  opacity: 0.15;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 255, 255, 0.009) 2px,
-    rgba(255, 255, 255, 0.009) 4px
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(89, 225, 255, 0.55) 25%,
+    rgba(143, 92, 255, 0.75) 50%,
+    rgba(89, 225, 255, 0.55) 75%,
+    transparent 100%
   );
+  opacity: 0;
+  animation: eaScanLine 11s ease-in-out infinite;
+}
+
+@keyframes eaScanLine {
+  0% { top: -1px; opacity: 0; }
+  4% { opacity: 0.65; }
+  96% { opacity: 0.28; }
+  100% { top: 100%; opacity: 0; }
 }
 
 .ea-hero__layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
@@ -407,6 +465,27 @@ body.ea-body {
   text-wrap: pretty;
 }
 
+.ea-form__legal-link {
+  color: rgba(255, 255, 255, 0.84);
+  text-decoration: underline;
+  text-decoration-color: rgba(54, 247, 205, 0.42);
+  text-underline-offset: 0.18em;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.ea-form__legal-link:hover {
+  color: rgba(255, 255, 255, 0.96);
+  text-decoration-color: rgba(54, 247, 205, 0.72);
+}
+
+.ea-form__legal-link:focus-visible {
+  outline: 2px solid rgba(54, 247, 205, 0.72);
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
 .ea-form__status {
   margin: 0.08rem 0 0;
   min-height: 1.2rem;
@@ -471,6 +550,8 @@ body.ea-body {
 
 @media (prefers-reduced-motion: reduce) {
   .ea-hero__grid,
+  .ea-hero__particle,
+  .ea-hero__scan-beam,
   .ea-hero__orb,
   .ea-badge__dot,
   .ea-form__submit {

@@ -9,9 +9,94 @@
 <title>Tecnologia BlockX</title>
 <meta content="A arquitetura de segurança da BlockX une Criptografia Pós-Quântica, Inteligência Artificial e Blockchain em uma infraestrutura digital de nova geração." name="description"/>
 <link href="tecnologia.css" rel="stylesheet"/>
+<link rel="stylesheet" href="site-header.css"/>
+<script defer src="site-header.js"></script>
 </head>
 <body class="tech-body">
 <a class="tech-skip-link" href="#main-content">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="site-header__inner max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <a class="site-header__brand" href="index.html#hero" aria-label="BlockX, ir para a página inicial">
+      <span class="site-header__brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="site-header-logo-a-tech" x1="7" y1="6" x2="24.5" y2="25.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#9945FF"/>
+              <stop offset="0.55" stop-color="#43B4CA"/>
+              <stop offset="1" stop-color="#19FB9B"/>
+            </linearGradient>
+            <linearGradient id="site-header-logo-b-tech" x1="25" y1="6" x2="8" y2="26" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#19FB9B"/>
+              <stop offset="0.48" stop-color="#43B4CA"/>
+              <stop offset="1" stop-color="#9945FF"/>
+            </linearGradient>
+          </defs>
+          <path d="M7 6H14.6L25 26H17.4L7 6Z" fill="url(#site-header-logo-a-tech)"/>
+          <path d="M17.4 6H25L14.6 26H7L17.4 6Z" fill="url(#site-header-logo-b-tech)"/>
+          <circle cx="16" cy="16" r="2.2" fill="#07060B"/>
+        </svg>
+      </span>
+      <span class="site-header__brand-copy">
+        <span class="site-header__brand-name">BlockX</span>
+        <span class="site-header__brand-sub">Quantum Security</span>
+      </span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Navegação principal">
+      <a class="site-header__nav-link" href="index.html#hero">Início</a>
+      <a class="site-header__nav-link is-active" aria-current="page" href="tecnologia.html#hero">Tecnologia</a>
+      <a class="site-header__nav-link" href="early-access.html#hero">Early Access</a>
+      <a class="site-header__nav-link" href="sobre.html#hero">Sobre Nós</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <button class="site-header__search" type="button" aria-controls="site-command-palette" aria-haspopup="dialog" data-site-search-open>
+        <svg class="site-header__search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m16 16 4.25 4.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span class="site-header__search-text">Pesquisar páginas ou atalhos</span>
+        <span class="site-header__search-shortcut" aria-hidden="true">Ctrl K</span>
+      </button>
+
+      <div class="site-header__locale" aria-label="Idioma atual: Português">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3.75 12H20.25M12 3.75C14.2 6.1 15.45 8.95 15.45 12C15.45 15.05 14.2 17.9 12 20.25M12 3.75C9.8 6.1 8.55 8.95 8.55 12C8.55 15.05 9.8 17.9 12 20.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>PT</span>
+      </div>
+
+      <button class="site-header__toggle" type="button" aria-label="Abrir menu principal" aria-controls="site-mobile-menu" aria-expanded="false">
+        <span class="site-header__toggle-bar"></span>
+        <span class="site-header__toggle-bar"></span>
+        <span class="site-header__toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__mobile" id="site-mobile-menu" hidden>
+    <div class="site-header__mobile-inner max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+      <button class="site-header__mobile-search" type="button" data-site-search-open>
+        <svg class="site-header__mobile-search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m16 16 4.25 4.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Pesquisar páginas ou atalhos</span>
+      </button>
+
+      <nav class="site-header__mobile-nav" aria-label="Navegação principal mobile">
+        <a class="site-header__mobile-link" href="index.html#hero">Início</a>
+        <a class="site-header__mobile-link is-active" aria-current="page" href="tecnologia.html#hero">Tecnologia</a>
+        <a class="site-header__mobile-link" href="early-access.html#hero">Early Access</a>
+        <a class="site-header__mobile-link" href="sobre.html#hero">Sobre Nós</a>
+      </nav>
+
+      <a class="site-header__mobile-cta" href="early-access.html#hero">Garantir Acesso Antecipado</a>
+    </div>
+  </div>
+</header>
 
 <main id="main-content">
   <section aria-labelledby="hero-title" class="tech-hero" id="hero">
@@ -48,11 +133,7 @@
         <!-- LEFT: Content -->
         <div class="tech-hero__content">
           <p class="tech-kicker">Tecnologia Proprietária BlockX</p>
-          <h1 class="nd-heading-2xl tech-hero__title" id="hero-title">
-            A Trindade da<br>
-            <span class="tech-hero__title-gradient">Segurança</span><br>
-            Digital.
-          </h1>
+          <h1 class="nd-heading-2xl tech-hero__title" id="hero-title"><span class="tech-hero__title-plain">A Trindade da </span><span class="tech-hero__title-accent">Segurança Digital</span></h1>
           <p class="nd-body-xl tech-hero__lead">Descubra como a BlockX une Criptografia Pós-Quântica, Inteligência Artificial e Blockchain para criar a infraestrutura mais segura da atualidade.</p>
 
           <div class="tech-hero__cta-row">
@@ -126,29 +207,25 @@
         </div>
 
       </div>
+    </div>
 
-      <div class="tech-marquee" id="mvp">
-        <div class="tech-marquee__row">
-          <span class="tech-marquee__item">Criptografia Pós-Quântica</span>
-          <span aria-hidden="true" class="tech-marquee__dot"></span>
-          <span class="tech-marquee__item">Inteligência Artificial</span>
-          <span aria-hidden="true" class="tech-marquee__dot"></span>
-          <span class="tech-marquee__item">Blockchain</span>
-          <span aria-hidden="true" class="tech-marquee__dot"></span>
-          <span class="tech-marquee__item">Arquitetura Exclusiva</span>
+    <div class="tech-marquee" id="mvp">
+      <div class="tech-marquee__grid max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+        <div class="tech-marquee__stat">
+          <span class="tech-marquee__stat-value">Blockchain</span>
+          <span class="tech-marquee__stat-label">Registro imutável descentralizado</span>
+        </div>
+        <div class="tech-marquee__stat">
+          <span class="tech-marquee__stat-value">IA Adaptativa</span>
+          <span class="tech-marquee__stat-label">Defesa autônoma em tempo real</span>
+        </div>
+        <div class="tech-marquee__stat">
+          <span class="tech-marquee__stat-value">Pós-Quântica</span>
+          <span class="tech-marquee__stat-label">Resistente a ameaças futuras</span>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Divisor 01 → 02: seta de scroll animada -->
-  <div class="tech-scroll-divider" aria-hidden="true">
-    <span class="tech-scroll-divider__line"></span>
-    <span class="tech-scroll-divider__icon">
-      <svg fill="none" height="18" viewBox="0 0 24 24" width="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-    </span>
-    <span class="tech-scroll-divider__line tech-scroll-divider__line--bottom"></span>
-  </div>
 
   <section aria-labelledby="shield-title" class="tech-shield" id="escudo">
     <div aria-hidden="true" class="tech-shield__bg">
@@ -158,13 +235,19 @@
       <div class="tech-shield__divider"></div>
     </div>
 
+    <div class="tech-scroll-divider tech-scroll-divider--section-top" aria-hidden="true">
+      <span class="tech-scroll-divider__line"></span>
+      <span class="tech-scroll-divider__icon">
+        <svg fill="none" height="18" viewBox="0 0 24 24" width="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
+      </span>
+      <span class="tech-scroll-divider__line tech-scroll-divider__line--bottom"></span>
+    </div>
+
     <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
       <div class="tech-shield__frame">
-        <p class="tech-kicker tech-shield__kicker">02 — O Escudo</p>
-
         <div class="tech-shield__intro">
-          <h2 class="nd-heading-xl tech-shield__title" id="shield-title">Blindagem contra os <span class="tech-shield__title-accent">supercomputadores do amanhã.</span></h2>
-          <p class="nd-body-xl tech-shield__lead">A computação quântica vai quebrar as senhas e chaves criptográficas que protegem a internet de hoje. A BlockX se antecipa a isso com algoritmos matemáticos de nova geração, impossíveis de serem decifrados até mesmo pelas máquinas mais poderosas do futuro.</p>
+          <h2 class="nd-heading-l tech-shield__title" id="shield-title">Blindagem contra os <span class="tech-shield__title-accent">supercomputadores do amanhã.</span></h2>
+          <p class="nd-body-l tech-shield__lead">A computação quântica vai quebrar as senhas e chaves criptográficas que protegem a internet de hoje. A BlockX se antecipa a isso com algoritmos matemáticos de nova geração, impossíveis de serem decifrados até mesmo pelas máquinas mais poderosas do futuro.</p>
         </div>
 
         <div class="tech-shield__threats" aria-label="Riscos da infraestrutura tradicional">
@@ -190,21 +273,6 @@
     </div>
   </section>
 
-  <!-- Divisor 02 → 03: conector criativo escudo → inteligência -->
-  <div class="tech-bridge-divider" aria-hidden="true">
-    <div class="tech-bridge-divider__track">
-      <span class="tech-bridge-divider__node"></span>
-      <span class="tech-bridge-divider__rail tech-bridge-divider__rail--left"></span>
-      <div class="tech-bridge-divider__badge">
-        <span class="tech-bridge-divider__dot tech-bridge-divider__dot--one"></span>
-        <span class="tech-bridge-divider__label">Intelligence Layer</span>
-        <span class="tech-bridge-divider__dot tech-bridge-divider__dot--two"></span>
-      </div>
-      <span class="tech-bridge-divider__rail tech-bridge-divider__rail--right"></span>
-      <span class="tech-bridge-divider__node"></span>
-    </div>
-  </div>
-
   <section aria-labelledby="brain-title" class="tech-brain" id="cerebro">
     <div aria-hidden="true" class="tech-brain__bg">
       <div class="tech-brain__pulse tech-brain__pulse--one"></div>
@@ -212,10 +280,24 @@
       <div class="tech-brain__scan"></div>
     </div>
 
+    <div class="tech-bridge-divider tech-bridge-divider--section-top" aria-hidden="true">
+      <div class="tech-bridge-divider__track">
+        <span class="tech-bridge-divider__node"></span>
+        <span class="tech-bridge-divider__rail tech-bridge-divider__rail--left"></span>
+        <div class="tech-bridge-divider__badge">
+          <span class="tech-bridge-divider__dot tech-bridge-divider__dot--one"></span>
+          <span class="tech-bridge-divider__label">Intelligence Layer</span>
+          <span class="tech-bridge-divider__dot tech-bridge-divider__dot--two"></span>
+        </div>
+        <span class="tech-bridge-divider__rail tech-bridge-divider__rail--right"></span>
+        <span class="tech-bridge-divider__node"></span>
+      </div>
+    </div>
+
     <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
       <div class="tech-brain__frame">
         <div class="tech-brain__header">
-          <h2 class="nd-heading-xl tech-brain__title" id="brain-title"><span class="tech-brain__title-line">O que esta acontecendo</span><span class="tech-brain__title-line">agora.</span></h2>
+          <h2 class="nd-heading-xl tech-brain__title" id="brain-title"><span class="tech-brain__title-line">O que esta <br>acontecendo agora</span></h2>
         </div>
 
         <p class="nd-body-xl tech-brain__lead">Esqueça os sistemas reativos que só avisam quando o dano já foi feito. Nossa IA Operacional trabalha 24/7 analisando padrões de comportamento. Se um acesso ou movimento fora do comum for detectado, o sistema bloqueia a ação em milissegundos.</p>
@@ -278,21 +360,20 @@
     </div>
   </section>
 
-  <!-- Divisor 03 → 04: Camada de custódia -->
-  <div class="tech-divider tech-divider--custody" aria-hidden="true">
-    <span class="tech-divider__line"></span>
-    <div class="tech-divider__badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      <span class="tech-divider__label">Custódia</span>
-    </div>
-    <span class="tech-divider__line"></span>
-  </div>
-
   <section aria-labelledby="vault-title" class="tech-custody" id="cofre">
     <div aria-hidden="true" class="tech-custody__bg">
       <div class="tech-custody__glow tech-custody__glow--amber"></div>
       <div class="tech-custody__glow tech-custody__glow--cyan"></div>
       <div class="tech-custody__lines"></div>
+    </div>
+
+    <div class="tech-divider tech-divider--custody tech-divider--section-top" aria-hidden="true">
+      <span class="tech-divider__line"></span>
+      <div class="tech-divider__badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span class="tech-divider__label">Custódia</span>
+      </div>
+      <span class="tech-divider__line"></span>
     </div>
 
     <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
@@ -337,16 +418,6 @@
     </div>
   </section>
 
-  <!-- Divisor 04 → 05: Comparativo -->
-  <div class="tech-divider tech-divider--compare" aria-hidden="true">
-    <span class="tech-divider__line tech-divider__line--left"></span>
-    <div class="tech-divider__badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m18 8-6-6-6 6M6 16l6 6 6-6"/></svg>
-      <span class="tech-divider__label">Comparativo</span>
-    </div>
-    <span class="tech-divider__line tech-divider__line--right"></span>
-  </div>
-
   <section aria-labelledby="compare-title" class="tech-compare" id="comparacao">
     <div aria-hidden="true" class="tech-compare__bg">
       <div class="tech-compare__glow tech-compare__glow--red"></div>
@@ -354,9 +425,17 @@
       <div class="tech-compare__divider"></div>
     </div>
 
+    <div class="tech-divider tech-divider--compare tech-divider--section-top" aria-hidden="true">
+      <span class="tech-divider__line tech-divider__line--left"></span>
+      <div class="tech-divider__badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="m18 8-6-6-6 6M6 16l6 6 6-6"/></svg>
+        <span class="tech-divider__label">Comparativo</span>
+      </div>
+      <span class="tech-divider__line tech-divider__line--right"></span>
+    </div>
+
     <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
       <div class="tech-compare__header">
-        <p class="tech-kicker tech-compare__kicker">05 — Comparação</p>
         <h2 class="nd-heading-l tech-compare__title" id="compare-title">Por que a infraestrutura tradicional <span class="font-light">já está defasada?</span></h2>
         <p class="nd-body-xl tech-compare__lead">Veja a diferença entre deixar seus dados no passado e trazê-los para o futuro.</p>
       </div>
@@ -423,21 +502,20 @@
     </div>
   </section>
 
-  <!-- Divisor 05 → 06: Acesso -->
-  <div class="tech-divider tech-divider--access" aria-hidden="true">
-    <span class="tech-divider__line"></span>
-    <div class="tech-divider__badge tech-divider__badge--glow">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-      <span class="tech-divider__label">Acesso Prioritário</span>
-    </div>
-    <span class="tech-divider__line"></span>
-  </div>
-
   <section aria-labelledby="final-cta-title" class="tech-final" id="acesso">
     <div aria-hidden="true" class="tech-final__bg">
       <div class="tech-final__halo tech-final__halo--one"></div>
       <div class="tech-final__halo tech-final__halo--two"></div>
       <div class="tech-final__grain"></div>
+    </div>
+
+    <div class="tech-divider tech-divider--access tech-divider--section-top" aria-hidden="true">
+      <span class="tech-divider__line"></span>
+      <div class="tech-divider__badge tech-divider__badge--glow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        <span class="tech-divider__label">Acesso Prioritário</span>
+      </div>
+      <span class="tech-divider__line"></span>
     </div>
 
     <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
@@ -504,7 +582,7 @@
       <div class="tech-footer__grid"></div>
     </div>
 
-    <div class="tech-shell max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
+    <div class="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10">
       <div class="tech-footer__frame">
         <div class="tech-footer__brand tech-footer__card tech-footer__card--brand">
           <p class="tech-footer__eyebrow">BlockX</p>
@@ -516,14 +594,17 @@
           <p class="tech-footer__copy">A BlockX é uma empresa de desenvolvimento de software de segurança e infraestrutura tecnológica. A BlockX não é uma corretora de valores, não oferece serviços de consultoria financeira, não emite valores mobiliários e não faz qualquer promessa de rentabilidade, lucro (ROI) ou apreciação de ativos. O nosso Programa de Acesso Antecipado (Early Access Program) e a distribuição de créditos digitais possuem caráter estritamente utilitário dentro do ecossistema do nosso software. O uso de criptografia avançada e tecnologias emergentes envolve riscos tecnológicos; os usuários são os únicos responsáveis pela gestão de suas chaves e utilização das nossas ferramentas.</p>
         </div>
 
-        <nav aria-label="Links úteis" class="tech-footer__nav">
-          <a class="tech-footer__link" href="index.html#hero">Início</a>
-          <a aria-current="page" class="tech-footer__link is-active" href="tecnologia.html#hero">Tecnologia</a>
-          <a class="tech-footer__link" href="early-access.html#hero">Early Access</a>
-          <a class="tech-footer__link" href="sobre.html#hero">Sobre Nós</a>
-          <a class="tech-footer__link" href="index.html#footer">Termos de Uso</a>
-          <a class="tech-footer__link" href="index.html#footer">Política de Privacidade</a>
-        </nav>
+        <div class="tech-footer__nav" role="group" aria-label="Links úteis e créditos">
+          <nav aria-label="Links úteis" class="tech-footer__nav-list">
+            <a class="tech-footer__link" href="index.html#hero">Início</a>
+            <a aria-current="page" class="tech-footer__link is-active" href="tecnologia.html#hero">Tecnologia</a>
+            <a class="tech-footer__link" href="early-access.html#hero">Early Access</a>
+            <a class="tech-footer__link" href="sobre.html#hero">Sobre Nós</a>
+            <a class="tech-footer__link" href="termos-de-uso.html#hero">Termos de Uso</a>
+            <a class="tech-footer__link" href="politica-de-privacidade.html#hero">Política de Privacidade</a>
+          </nav>
+          <p class="tech-footer__nav-credit">Desenvolvido por <a class="tech-footer__nav-credit-link" href="https://portfolio.voneassessoria.com.br" rel="noopener noreferrer" target="_blank">V-One Assessoria</a></p>
+        </div>
       </div>
     </div>
   </footer>
@@ -632,7 +713,7 @@
 
     footerNav.addEventListener("click", (event) => {
       const target = event.target;
-      if (!(target instanceof HTMLAnchorElement)) return;
+      if (!(target instanceof HTMLAnchorElement) || !target.classList.contains("tech-footer__link")) return;
 
       links.forEach((link) => {
         const isActive = link === target;
