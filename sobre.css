@@ -763,6 +763,19 @@ body.sobre-body .vone-faq {
 }
 
 @media (min-width: 768px) {
+  .sobre-dna__layout {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: 2.4rem;
+    align-items: start;
+  }
+
+  .sobre-dna__media {
+    width: min(100%, 24rem);
+    max-height: 20rem;
+    aspect-ratio: 16 / 10;
+    justify-self: start;
+  }
+
   .sobre-manifesto__pillars {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -802,22 +815,21 @@ body.sobre-body .vone-faq {
 
 @media (min-width: 1024px) {
   .sobre-dna__layout {
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: 3.8rem;
-    /* stretch: a coluna da imagem cresce até a altura do conteúdo */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 3rem;
     align-items: stretch;
   }
 
   .sobre-dna__media {
-    /* Remove aspect-ratio fixo — a imagem ocupa a altura do conteúdo ao lado */
-    aspect-ratio: unset;
-    height: 100%;
-    min-height: 420px;
+    width: 100% !important;
+    justify-self: start;
+    aspect-ratio: auto;
+    height: 70vh;
+    max-height: none !important;
   }
 
   .sobre-dna__image {
-    height: 100%;
-    min-height: 420px;
+    height: 100% !important;
   }
 
   .sobre-manifesto__grid {
@@ -828,9 +840,10 @@ body.sobre-body .vone-faq {
 
 @media (max-width: 1023px) {
   .sobre-dna__media {
-    max-width: 38rem;
+    max-width: 26rem;
     margin-inline: auto;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
+    max-height: 21rem;
   }
   .sobre-dna__content {
     margin-inline: auto;
